@@ -8,42 +8,57 @@
 
 #import "GameScene.h"
 
-@implementation GameScene
+@implementation GameScene {
+    NSMutableArray *_players;
+    NSUInteger _currentPlayerIndex;
+    SKSpriteNode *_cat;
+}
 
 -(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+
+    if (_currentPlayerIndex == -1) {
+        return;
     }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+}
+
+#pragma mark MultiplayerNetworkingProtocol
+
+- (void)matchEnded {
+//    if (self.gameEndedBlock) {
+//        self.gameEndedBlock();
+//    }
+}
+
+- (void)setCurrentPlayerIndex:(NSUInteger)index {
+    _currentPlayerIndex = index;
+}
+
+- (void)movePlayerAtIndex:(NSUInteger)index {
+
+}
+
+- (void)gameOver:(BOOL)player1Won {
+//    BOOL didLocalPlayerWin = YES;
+//    if (player1Won) {
+//        didLocalPlayerWin = NO;
+//    }
+//    if (self.gameOverBlock) {
+//        self.gameOverBlock(didLocalPlayerWin);
+//    }
+}
+
+- (void)setPlayerAliases:(NSArray*)playerAliases {
+//    [playerAliases enumerateObjectsUsingBlock:^(NSString *playerAlias, NSUInteger idx, BOOL *stop) {
+//        [_players[idx] setPlayerAliasText:playerAlias];
+//    }];
 }
 
 @end

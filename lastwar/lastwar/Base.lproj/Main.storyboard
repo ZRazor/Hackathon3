@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="j3Q-2r-cdN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="j3Q-2r-cdN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="-330.66666666666669" y="57.746666666666663"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="okU-Y4-rFX">
             <objects>
-                <viewController id="LQ0-t4-mdb" sceneMemberID="viewController">
+                <viewController id="LQ0-t4-mdb" customClass="MRMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FrO-zg-dyv"/>
                         <viewControllerLayoutGuide type="bottom" id="abu-Eg-rw4"/>
@@ -68,7 +68,7 @@
                                     <segue destination="Nl9-dd-ZRV" kind="modal" id="MhO-Vv-5yu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGq-6U-6n9">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGq-6U-6n9">
                                 <rect key="frame" x="120" y="269" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="0k3-tz-ArN"/>
@@ -78,7 +78,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LVB-YS-i5n" kind="modal" id="Q0u-bN-GMa"/>
+                                    <segue destination="LVB-YS-i5n" kind="modal" id="Ms4-CE-AUd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,6 +92,9 @@
                             <constraint firstAttribute="centerX" secondItem="hni-cC-EDF" secondAttribute="centerX" constant="-0.5" id="uv5-is-iRg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="findGameButton" destination="TGq-6U-6n9" id="Y85-qD-Xpf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05v-mL-yWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,7 +137,7 @@
         <!--Game View Controller-->
         <scene sceneID="CtS-rA-C9T">
             <objects>
-                <viewController id="LVB-YS-i5n" customClass="GameViewController" sceneMemberID="viewController">
+                <viewController id="LVB-YS-i5n" customClass="MRGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PCf-gQ-wO7"/>
                         <viewControllerLayoutGuide type="bottom" id="b3d-qh-BLL"/>
