@@ -10,10 +10,6 @@
 #import "MRMenuViewController.h"
 
 @interface MRSpalshViewController ()
-{
-    NSTimer *timer;
-}
-
 
 @end
 
@@ -21,9 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [super viewDidLoad];
-    timer = [NSTimer scheduledTimerWithTimeInterval:2.0f  target:self selector:@selector(showMainMenuController) userInfo:nil repeats:YES];
+    [self performSelector:@selector(showMainMenuController) withObject:nil afterDelay:2.0f];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,13 +27,7 @@
 
 - (void)showMainMenuController
 {
-    
-    MRMenuViewController *menuController = [[MRMenuViewController alloc] init];
-    [[[UIApplication sharedApplication] keyWindow] setRootViewController:menuController];
-    
-    
-//    [self.window.rootViewController presentViewController:loginViewController animated:NO completion:nil];
-    
+    [self performSegueWithIdentifier:@"mainMenuSegue" sender:self];   
 }
 
 
