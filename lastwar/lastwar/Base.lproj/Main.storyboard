@@ -38,11 +38,12 @@
                         <outlet property="shieldImageVIew" destination="g7t-LQ-web" id="Xws-g0-vgV"/>
                         <outlet property="topView" destination="HsS-2q-X07" id="wmY-nw-GVb"/>
                         <outlet property="weaponsImageView" destination="IsP-un-12F" id="7fl-JG-ik0"/>
+                        <segue destination="LQ0-t4-mdb" kind="modal" identifier="mainMenuSegue" modalTransitionStyle="crossDissolve" id="FKm-de-suG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBP-oA-cHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-331" y="57"/>
+            <point key="canvasLocation" x="-374" y="57"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="okU-Y4-rFX">

@@ -33,11 +33,7 @@
 
 - (void)showMainMenuController
 {
-    MRMenuViewController* menuController = [[MRMenuViewController alloc] init];
-    [self presentViewController:menuController animated:YES completion:^{
-        ;
-    }];
-    
+    [self performSegueWithIdentifier:@"mainMenuSegue" sender:self];
 }
 
 
