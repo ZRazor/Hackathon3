@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="j3Q-2r-cdN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="j3Q-2r-cdN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Spalsh View Controller-->
         <scene sceneID="x4M-83-58N">
             <objects>
-                <viewController id="j3Q-2r-cdN" sceneMemberID="viewController">
+                <viewController id="j3Q-2r-cdN" customClass="MRSpalshViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B4b-5T-6ed"/>
                         <viewControllerLayoutGuide type="bottom" id="dDr-o4-zbI"/>
@@ -16,29 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-LQ-web">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HsS-2q-X07" userLabel="topView">
+                                <rect key="frame" x="0.0" y="284" width="320" height="284"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yr2-F4-Ivx" userLabel="bottonView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                <color key="backgroundColor" red="0.4530184659" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-LQ-web">
                                 <rect key="frame" x="85" y="209" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="1kn-tr-F4h"/>
-                                    <constraint firstAttribute="height" constant="150" id="Fxi-qa-imK"/>
-                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weapons" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-un-12F">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weapons" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-un-12F">
                                 <rect key="frame" x="85" y="209" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Bb6-Ke-Zqh"/>
-                                    <constraint firstAttribute="width" constant="150" id="jbT-Ky-YGf"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="g7t-LQ-web" secondAttribute="centerY" id="4hd-72-zuS"/>
-                            <constraint firstAttribute="centerX" secondItem="g7t-LQ-web" secondAttribute="centerX" id="Ugl-9D-VEf"/>
-                            <constraint firstAttribute="centerX" secondItem="IsP-un-12F" secondAttribute="centerX" id="dz5-bB-chS"/>
-                            <constraint firstAttribute="centerY" secondItem="IsP-un-12F" secondAttribute="centerY" id="rO5-df-brU"/>
-                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottonView" destination="Yr2-F4-Ivx" id="Lt9-5v-NL4"/>
+                        <outlet property="shieldImageVIew" destination="g7t-LQ-web" id="Xws-g0-vgV"/>
+                        <outlet property="topView" destination="HsS-2q-X07" id="wmY-nw-GVb"/>
+                        <outlet property="weaponsImageView" destination="IsP-un-12F" id="7fl-JG-ik0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBP-oA-cHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
