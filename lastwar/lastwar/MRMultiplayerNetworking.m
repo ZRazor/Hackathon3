@@ -3,9 +3,6 @@
 #define playerIdKey @"PlayerId"
 #define randomNumberKey @"randomNumber"
 
-//fix for 64 bit
-typedef unsigned int MYSUInteger;
-
 typedef NS_ENUM(MYSUInteger, GameState) {
     kGameStateWaitingForMatch = 0,
     kGameStateWaitingForRandomNumber,
@@ -22,10 +19,6 @@ typedef NS_ENUM(MYSUInteger, MessageType) {
     kMessageTypeGameOver
 };
 
-typedef uint32_t MoveDirection;
-#define moveLeft 1;
-#define moveRight 2;
-
 typedef struct {
     MessageType messageType;
 } Message;
@@ -41,7 +34,7 @@ typedef struct {
 
 typedef struct {
     Message message;
-//    MoveDirection direction;
+    MoveDirection direction;
 } MessageMove;
 
 typedef struct {
@@ -85,9 +78,10 @@ typedef struct {
     }
 }
 
-- (void)sendMove {
+- (void)sendMove:(MoveDirection)direction {
     MessageMove messageMove;
     messageMove.message.messageType = kMessageTypeMove;
+    messageMove.direction = direction;
     NSData *data = [NSData dataWithBytes:&messageMove
                                   length:sizeof(MessageMove)];
     [self sendData:data];
@@ -274,7 +268,7 @@ typedef struct {
     } else if (message->messageType == kMessageTypeMove) {
         NSLog(@"Move message received");
         MessageMove *messageMove = (MessageMove*)[data bytes];
-        [self.delegate movePlayerAtIndex:[self indexForPlayerWithId:playerID]];
+        [self.delegate movePlayerAtIndex:[self indexForPlayerWithId:playerID] direction:messageMove->direction];
     } else if(message->messageType == kMessageTypeGameOver) {
         NSLog(@"Game over message received");
         MessageGameOver * messageGameOver = (MessageGameOver *) [data bytes];
