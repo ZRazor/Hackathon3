@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */; };
+		24034393598AC19B490F66FC /* MRGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 240344FD15D15013A4D153FE /* MRGameKitHelper.m */; };
+		3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */; };
 		CE6A41251AEA3B4700C94BED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41241AEA3B4700C94BED /* main.m */; };
 		CE6A41281AEA3B4700C94BED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41271AEA3B4700C94BED /* AppDelegate.m */; };
 		CE6A412B1AEA3B4700C94BED /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A412A1AEA3B4700C94BED /* GameScene.m */; };
 		CE6A412D1AEA3B4700C94BED /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE6A412C1AEA3B4700C94BED /* GameScene.sks */; };
-		CE6A41301AEA3B4700C94BED /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A412F1AEA3B4700C94BED /* GameViewController.m */; };
+		CE6A41301AEA3B4700C94BED /* MRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A412F1AEA3B4700C94BED /* MRGameViewController.m */; };
 		CE6A41331AEA3B4700C94BED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6A41311AEA3B4700C94BED /* Main.storyboard */; };
 		CE6A41351AEA3B4700C94BED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6A41341AEA3B4700C94BED /* Images.xcassets */; };
 		CE6A41381AEA3B4700C94BED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6A41361AEA3B4700C94BED /* LaunchScreen.xib */; };
@@ -29,6 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMultiplayerNetworking.m; sourceTree = "<group>"; };
+		240344FD15D15013A4D153FE /* MRGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameKitHelper.m; sourceTree = "<group>"; };
+		2403452668A6D40FA5497842 /* MRMultiplayerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMultiplayerNetworking.h; sourceTree = "<group>"; };
+		240347FC07B4E7FC7D27BD22 /* MRGameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameKitHelper.h; sourceTree = "<group>"; };
+		3125649A1AEA4E7600EE3690 /* MRMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMenuViewController.h; sourceTree = "<group>"; };
+		3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMenuViewController.m; sourceTree = "<group>"; };
 		CE6A411F1AEA3B4700C94BED /* lastwar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lastwar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6A41231AEA3B4700C94BED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6A41241AEA3B4700C94BED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -37,8 +46,8 @@
 		CE6A41291AEA3B4700C94BED /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		CE6A412A1AEA3B4700C94BED /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		CE6A412C1AEA3B4700C94BED /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		CE6A412E1AEA3B4700C94BED /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		CE6A412F1AEA3B4700C94BED /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		CE6A412E1AEA3B4700C94BED /* MRGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRGameViewController.h; sourceTree = "<group>"; };
+		CE6A412F1AEA3B4700C94BED /* MRGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRGameViewController.m; sourceTree = "<group>"; };
 		CE6A41321AEA3B4700C94BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE6A41341AEA3B4700C94BED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE6A41371AEA3B4700C94BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -65,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240344A712B89E387E599FA5 /* gamekit */ = {
+			isa = PBXGroup;
+			children = (
+				240347FC07B4E7FC7D27BD22 /* MRGameKitHelper.h */,
+				240344FD15D15013A4D153FE /* MRGameKitHelper.m */,
+				2403452668A6D40FA5497842 /* MRMultiplayerNetworking.h */,
+				240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */,
+			);
+			name = gamekit;
+			sourceTree = "<group>";
+		};
 		CE6A41161AEA3B4700C94BED = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6A414F1AEA3C8100C94BED /* gamescene */,
+				240344A712B89E387E599FA5 /* gamekit */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -154,6 +175,8 @@
 		CE6A41501AEA3CA400C94BED /* mainmenu */ = {
 			isa = PBXGroup;
 			children = (
+				3125649A1AEA4E7600EE3690 /* MRMenuViewController.h */,
+				3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */,
 			);
 			name = mainmenu;
 			sourceTree = "<group>";
@@ -161,8 +184,8 @@
 		CE6A41511AEA3CCA00C94BED /* game */ = {
 			isa = PBXGroup;
 			children = (
-				CE6A412E1AEA3B4700C94BED /* GameViewController.h */,
-				CE6A412F1AEA3B4700C94BED /* GameViewController.m */,
+				CE6A412E1AEA3B4700C94BED /* MRGameViewController.h */,
+				CE6A412F1AEA3B4700C94BED /* MRGameViewController.m */,
 			);
 			name = game;
 			sourceTree = "<group>";
@@ -216,6 +239,7 @@
 				TargetAttributes = {
 					CE6A411E1AEA3B4700C94BED = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 44FPHB4323;
 					};
 					CE6A413C1AEA3B4700C94BED = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -268,10 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6A41301AEA3B4700C94BED /* GameViewController.m in Sources */,
+				CE6A41301AEA3B4700C94BED /* MRGameViewController.m in Sources */,
 				CE6A41281AEA3B4700C94BED /* AppDelegate.m in Sources */,
 				CE6A412B1AEA3B4700C94BED /* GameScene.m in Sources */,
 				CE6A41251AEA3B4700C94BED /* main.m in Sources */,
+				24034393598AC19B490F66FC /* MRGameKitHelper.m in Sources */,
+				3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */,
+				24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = lastwar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -407,6 +435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = lastwar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -466,6 +495,7 @@
 				CE6A41491AEA3B4700C94BED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE6A414A1AEA3B4700C94BED /* Build configuration list for PBXNativeTarget "lastwarTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +504,7 @@
 				CE6A414C1AEA3B4700C94BED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
