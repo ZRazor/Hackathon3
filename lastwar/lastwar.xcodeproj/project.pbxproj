@@ -20,6 +20,7 @@
 		CE6A41381AEA3B4700C94BED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6A41361AEA3B4700C94BED /* LaunchScreen.xib */; };
 		CE6A41441AEA3B4700C94BED /* lastwarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41431AEA3B4700C94BED /* lastwarTests.m */; };
 		CE6A41551AEA6B9400C94BED /* MRSpalshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41541AEA6B9400C94BED /* MRSpalshViewController.m */; };
+		CE6A41591AEA7A9900C94BED /* MRPlayerSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41581AEA7A9900C94BED /* MRPlayerSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		CE6A41431AEA3B4700C94BED /* lastwarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lastwarTests.m; sourceTree = "<group>"; };
 		CE6A41531AEA6B9400C94BED /* MRSpalshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRSpalshViewController.h; path = controllers/MRSpalshViewController.h; sourceTree = "<group>"; };
 		CE6A41541AEA6B9400C94BED /* MRSpalshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRSpalshViewController.m; path = controllers/MRSpalshViewController.m; sourceTree = "<group>"; };
+		CE6A41571AEA7A9900C94BED /* MRPlayerSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRPlayerSprite.h; path = objects/MRPlayerSprite.h; sourceTree = "<group>"; };
+		CE6A41581AEA7A9900C94BED /* MRPlayerSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRPlayerSprite.m; path = objects/MRPlayerSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,7 @@
 		CE6A41211AEA3B4700C94BED /* lastwar */ = {
 			isa = PBXGroup;
 			children = (
+				CE6A41561AEA7A4300C94BED /* objects */,
 				CE6A414E1AEA3C5600C94BED /* services */,
 				CE6A414D1AEA3C3A00C94BED /* controllers */,
 				CE6A41261AEA3B4700C94BED /* AppDelegate.h */,
@@ -201,6 +205,15 @@
 				CE6A41541AEA6B9400C94BED /* MRSpalshViewController.m */,
 			);
 			name = splash;
+			sourceTree = "<group>";
+		};
+		CE6A41561AEA7A4300C94BED /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A41571AEA7A9900C94BED /* MRPlayerSprite.h */,
+				CE6A41581AEA7A9900C94BED /* MRPlayerSprite.m */,
+			);
+			name = objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +323,7 @@
 				CE6A412B1AEA3B4700C94BED /* GameScene.m in Sources */,
 				CE6A41251AEA3B4700C94BED /* main.m in Sources */,
 				CE6A41551AEA6B9400C94BED /* MRSpalshViewController.m in Sources */,
+				CE6A41591AEA7A9900C94BED /* MRPlayerSprite.m in Sources */,
 				24034393598AC19B490F66FC /* MRGameKitHelper.m in Sources */,
 				3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */,
 				24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */,

@@ -9,6 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 
 #import "MRMultiplayerNetworking.h"
+#import "MRPlayerSprite.h"
+
 
 @interface GameScene : SKScene <MultiplayerNetworkingProtocol>
 @property (nonatomic, copy) void (^gameOverBlock)(BOOL didWin);

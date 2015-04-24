@@ -27,7 +27,7 @@
 
 - (void)showMainMenuController
 {
-    [self performSegueWithIdentifier:@"mainMenuSegue" sender:self];   
+    [self performSegueWithIdentifier:@"mainMenuSegue" sender:self];
 }
 
 

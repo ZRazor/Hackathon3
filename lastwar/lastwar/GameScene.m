@@ -11,7 +11,8 @@
 @implementation GameScene {
     NSMutableArray *_players;
     MYSUInteger _currentPlayerIndex;
-    SKSpriteNode *_cat;
+    MRPlayerSprite *myPlayer, *otherPlayer;
+    
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -22,11 +23,24 @@
 }
 
 - (void)initializeGame {
-    //background init
-
     _players = [NSMutableArray arrayWithCapacity:2];
+    
+    [self initPlayer];
 
     _currentPlayerIndex = -1;
+}
+
+
+- (void)initPlayer
+{
+    myPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kMyPlayer];
+    otherPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kOtherPlayer];
+    
+    myPlayer.position = CGPointMake(180, 50);
+    otherPlayer.position = CGPointMake(180, 500);
+    
+    [self addChild:myPlayer];
+    [self addChild:otherPlayer];
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -39,7 +53,9 @@
     if (_currentPlayerIndex == -1) {
         return;
     }
-
+    
+    [myPlayer setPosition:CGPointMake(myPlayer.position.x + 1, myPlayer.position.y)];
+    
     [_networkingEngine sendMove:moveLeft];
 }
 
@@ -64,6 +80,9 @@
 }
 
 - (void)movePlayerAtIndex:(NSUInteger)index direction:(MoveDirection)direction {
+    if (direction == moveLeft) {
+        [otherPlayer setPosition:CGPointMake(otherPlayer.position.x + 1, otherPlayer.position.y)];
+    }
     NSLog(@"Player %d moved to %d", index, direction);
 }
 

@@ -57,10 +57,10 @@
     // Present the scene.
     [skView presentScene:scene];
 
+    //!
     _networkingEngine = [[MRMultiplayerNetworking alloc] init];
     _networkingEngine.delegate = scene;
     scene.networkingEngine = _networkingEngine;
-
     [[MRGameKitHelper sharedGameKitHelper] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:_networkingEngine];
 }
 

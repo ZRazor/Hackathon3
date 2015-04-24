@@ -18,6 +18,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    //!
+//    [_findGameButton setEnabled:YES];
+//    return;
 
     [[NSNotificationCenter defaultCenter]
             addObserver:self
