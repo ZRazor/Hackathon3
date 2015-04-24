@@ -33,7 +33,13 @@
 
 - (void)showMainMenuController
 {
-    [self performSegueWithIdentifier:@"mainMenuSegue" sender:self];
+    
+    MRMenuViewController *menuController = [[MRMenuViewController alloc] init];
+    [[[UIApplication sharedApplication] keyWindow] setRootViewController:menuController];
+    
+    
+//    [self.window.rootViewController presentViewController:loginViewController animated:NO completion:nil];
+    
 }
 
 
