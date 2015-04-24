@@ -16,26 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md9-cG-JKw">
-                                <rect key="frame" x="61" y="269" width="198" height="30"/>
-                                <state key="normal" title="Автопереход сплешь экран">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="LQ0-t4-mdb" kind="modal" id="Ppe-JP-Sv3"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-LQ-web">
+                                <rect key="frame" x="85" y="209" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1kn-tr-F4h"/>
+                                    <constraint firstAttribute="height" constant="150" id="Fxi-qa-imK"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weapons" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-un-12F">
+                                <rect key="frame" x="85" y="209" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Bb6-Ke-Zqh"/>
+                                    <constraint firstAttribute="width" constant="150" id="jbT-Ky-YGf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Md9-cG-JKw" secondAttribute="centerY" id="KxF-ov-eVc"/>
-                            <constraint firstAttribute="centerX" secondItem="Md9-cG-JKw" secondAttribute="centerX" id="yg1-LH-0lO"/>
+                            <constraint firstAttribute="centerY" secondItem="g7t-LQ-web" secondAttribute="centerY" id="4hd-72-zuS"/>
+                            <constraint firstAttribute="centerX" secondItem="g7t-LQ-web" secondAttribute="centerX" id="Ugl-9D-VEf"/>
+                            <constraint firstAttribute="centerX" secondItem="IsP-un-12F" secondAttribute="centerX" id="dz5-bB-chS"/>
+                            <constraint firstAttribute="centerY" secondItem="IsP-un-12F" secondAttribute="centerY" id="rO5-df-brU"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBP-oA-cHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330.66666666666669" y="57.746666666666663"/>
+            <point key="canvasLocation" x="-331" y="57"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="okU-Y4-rFX">
@@ -150,6 +157,10 @@
             <point key="canvasLocation" x="437.33333333333331" y="57.746666666666663"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shield" width="150" height="150"/>
+        <image name="weapons" width="100" height="100"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
