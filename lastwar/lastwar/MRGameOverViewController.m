@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (_didWin) {
+    if (_matchError) {
+        self.textLabel.text = @"Ошибка соединения";
+    } else if (_didWin) {
         self.textLabel.text = @"Вы выиграли";
     } else {
         self.textLabel.text = @"Вы проиграли";

@@ -10,6 +10,7 @@
 
 @interface MRGameOverViewController : UIViewController
 @property BOOL didWin;
+@property BOOL matchError;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @end

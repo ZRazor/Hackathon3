@@ -40,6 +40,7 @@
 		240344FD15D15013A4D153FE /* MRGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameKitHelper.m; sourceTree = "<group>"; };
 		2403452668A6D40FA5497842 /* MRMultiplayerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMultiplayerNetworking.h; sourceTree = "<group>"; };
 		240347FC07B4E7FC7D27BD22 /* MRGameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameKitHelper.h; sourceTree = "<group>"; };
+		24034BD93D09B4E2FDA8DF96 /* matchEndType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matchEndType.h; sourceTree = "<group>"; };
 		24034FB5DB67394A16E6115E /* masks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = masks.h; sourceTree = "<group>"; };
 		3125649A1AEA4E7600EE3690 /* MRMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMenuViewController.h; sourceTree = "<group>"; };
 		3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMenuViewController.m; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 				240344FD15D15013A4D153FE /* MRGameKitHelper.m */,
 				2403452668A6D40FA5497842 /* MRMultiplayerNetworking.h */,
 				240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */,
+				24034BD93D09B4E2FDA8DF96 /* matchEndType.h */,
 			);
 			name = gamekit;
 			sourceTree = "<group>";

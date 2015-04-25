@@ -179,10 +179,10 @@
     NSLog(@"player fire");
     
     if (player == myPlayer) {
-        startPoint = CGPointMake(position + 10, myPlayer.position.y + 19);
+        startPoint = CGPointMake(position + 10, myPlayer.position.y + 30);
         endPoint = CGPointMake(position + 10, 580);
     } else {
-        startPoint = CGPointMake(position + 10, otherPlayer.position.y - 19);
+        startPoint = CGPointMake(position + 10, otherPlayer.position.y - 30);
         endPoint = CGPointMake(position + 10, -3);
     }
     

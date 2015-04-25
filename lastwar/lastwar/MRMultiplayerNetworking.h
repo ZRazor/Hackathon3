@@ -1,4 +1,5 @@
 #import "MRGameKitHelper.h"
+#import "matchEndType.h"
 
 typedef float PlayerPosition;
 #define moveLeft 1
