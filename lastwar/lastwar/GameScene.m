@@ -63,7 +63,11 @@
 
     //BLOCKS
     MRBlockNode *block = [[MRBlockNode alloc] initWithPosition:CGPointMake(100, 300)];
+    MRBlockNode *block1 = [[MRBlockNode alloc] initWithPosition:CGPointMake(180, 350)];
+    MRBlockNode *block2 = [[MRBlockNode alloc] initWithPosition:CGPointMake(50, 400)];
     [self addChild:block];
+    [self addChild:block1];
+    [self addChild:block2];
 }
 
 #pragma mark - Interface
@@ -174,9 +178,11 @@
     if ([[contact bodyA].node isKindOfClass:[MRDamagedObject class]]) {
         damObject = (MRDamagedObject *)[contact bodyA].node;
         bullet = (MRBulletNode *)[contact bodyB].node;
-    } else {
+    } else if ([[contact bodyB].node isKindOfClass:[MRDamagedObject class]]) {
         damObject = (MRDamagedObject *)[contact bodyB].node;
         bullet = (MRBulletNode *)[contact bodyA].node;
+    } else {
+        return;
     }
     damObject.hp -= bullet.damage;
     if (damObject == otherPlayer) {
