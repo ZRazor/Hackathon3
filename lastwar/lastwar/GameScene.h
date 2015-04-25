@@ -19,7 +19,7 @@ typedef enum {
 } MRPlayerActionType;
 
 
-@interface GameScene : SKScene <MultiplayerNetworkingProtocol>
+@interface GameScene : SKScene <MultiplayerNetworkingProtocol, SKPhysicsContactDelegate>
 @property (nonatomic, copy) void (^gameOverBlock)(BOOL didWin);
 @property (nonatomic, copy) void (^gameEndedBlock)();
 @property (nonatomic, copy) void (^gameStartBlock)();

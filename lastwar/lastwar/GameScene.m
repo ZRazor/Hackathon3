@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "masks.h"
 
 @implementation GameScene {
     NSMutableArray *_players;
@@ -35,25 +36,40 @@
 
 - (void)initializeGame {
     _players = [NSMutableArray arrayWithCapacity:2];
-    
-    [self initPlayer];
+
+    [self initPlayers];
     _currentPlayerIndex = -1;
-    
+
+    self.physicsWorld.contactDelegate = self;
+
     SKSpriteNode* bgNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"bg_sand"]];
     bgNode.zPosition = -100;
     bgNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:bgNode];
 }
 
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    [[contact bodyA].node setHidden:YES];
+    [[contact bodyB].node setHidden:YES];
+    NSLog(@"Contact begin");
+}
 
-- (void)initPlayer
+- (void)didEndContact:(SKPhysicsContact *)contact {
+    NSLog(@"Contact end");
+}
+
+-(MRPlayerSprite *)createPlayerAtCoord:(CGPoint)point andType:(MRPlayerType)type {
+    MRPlayerSprite *player = [[MRPlayerSprite alloc] initWithPlayerType:type];
+    player.position = point;
+
+    return player;
+}
+
+- (void)initPlayers
 {
-    myPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kMyPlayer];
-    otherPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kOtherPlayer];
-    
-    myPlayer.position = CGPointMake(180, 30);
-    otherPlayer.position = CGPointMake(180, 548);
-    
+    myPlayer = [self createPlayerAtCoord:CGPointMake(180, 30) andType:kMyPlayer];
+    otherPlayer = [self createPlayerAtCoord:CGPointMake(180, 548) andType:kOtherPlayer];
+
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
 }
@@ -106,7 +122,7 @@
 }
 
 - (void)movePlayerToPos:(PlayerPosition)position player:(MRPlayerSprite *)player {
-    if (myPlayer.position.x > 317 - myPlayer.size.width) {
+    if (player.position.x > 317 - player.size.width) {
         return;
     }
     SKAction *moveAction = [SKAction moveTo:CGPointMake(position, player.position.y) duration:afterMoveTime];
@@ -121,6 +137,7 @@
 
 - (void)stopPlayerActionWithType:(MRPlayerActionType)type
 {
+    //?????
     [playerActionTimer  invalidate];
     playerActionTimer = nil;
 }
@@ -169,6 +186,8 @@
     if (self.paused && _currentPlayerIndex == -1) {
         return;
     }
+
+
     //check something
 }
 
