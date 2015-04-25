@@ -153,12 +153,20 @@
 
 - (void)playerFire:(BOOL)isMyPlayer
 {
+    CGPoint startPoint = CGPointMake(0, 0);
+    CGPoint endPoint = CGPointMake(0, 0);
+    
     NSLog(@"player fire");
     if (isMyPlayer) {
         [_networkingEngine sendShot:[myPlayer position].x];
+        startPoint = myPlayer.position;
+        endPoint = CGPointMake(myPlayer.position.x, 580);
+    } else {
+        startPoint = otherPlayer.position;
+        endPoint = CGPointMake(otherPlayer.xScale, -3);
     }
     
-    [self shotBulletWithStartCord:myPlayer.position];
+    [self shotBulletWithStartCord:startPoint AndEndPoint:endPoint];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -188,10 +196,10 @@
 
 #pragma mark - guns
 
-- (void)shotBulletWithStartCord:(CGPoint)startPoint
+- (void)shotBulletWithStartCord:(CGPoint)startPoint AndEndPoint:(CGPoint)endPoint
 {
     MRBulletNode* bullet = [[MRBulletNode alloc] initWithSpeed:1 AndDemage:50 AndStartPoint:startPoint];
-    SKAction *moveAction = [SKAction moveTo:CGPointMake(bullet.position.x, 580) duration:bullet.speed];
+    SKAction *moveAction = [SKAction moveTo:endPoint duration:bullet.speed];
     [bullet runAction:moveAction];
     [self addChild:bullet];
 }
@@ -220,7 +228,7 @@
 }
 
 - (void)shotPlayerAtIndex:(NSUInteger)index playerPosition:(PlayerPosition)position {
-
+    [self playerFire:NO];
     NSLog(@"Player %d shot at %f", index, position);
 }
 
