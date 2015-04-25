@@ -13,9 +13,9 @@
 - (id)initWithPlayerType:(MRPlayerType)type
 {
     if (type == kMyPlayer) {
-        self = [super initWithTexture:[SKTexture textureWithImageNamed:@"robot"] color:nil size:CGSizeMake(20, 20)];
+        self = [super initWithTexture:[SKTexture textureWithImageNamed:@"robot"] color:nil size:CGSizeMake(32, 32)];
     } else if (type == kOtherPlayer) {
-        self = [super initWithTexture:[SKTexture textureWithImageNamed:@"robot2"] color:nil size:CGSizeMake(20, 20)];
+        self = [super initWithTexture:[SKTexture textureWithImageNamed:@"robot2"] color:nil size:CGSizeMake(32, 32)];
     }
     
     if (!self) {

@@ -1,4 +1,4 @@
-#define OFFLINE_GAME YES
+#define OFFLINE_GAME NO
 
 @import GameKit;
 

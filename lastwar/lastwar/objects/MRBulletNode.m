@@ -12,7 +12,7 @@
 
 -(instancetype)initWithSpeed:(NSInteger)speed AndDemage:(NSInteger)demage AndStartPoint:(CGPoint)startPoint;
 {
-    self = [super initWithColor:[UIColor whiteColor] size:CGSizeMake(2, 4)];
+    self = [super initWithColor:[UIColor whiteColor] size:CGSizeMake(3, 6)];
     
     self.demage = demage;
     self.speed = speed;

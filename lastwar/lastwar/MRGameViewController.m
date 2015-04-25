@@ -38,13 +38,14 @@
 
     SKView *skView = (SKView*)self.view;
 
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+//    skView.showsFPS = YES;
+//    skView.showsNodeCount = YES;
 
     // Create and configure the scene.
-    GameScene * scene = [GameScene sceneWithSize:skView.bounds.size];
+    GameScene* scene = [GameScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-
+    
+    //background
     scene.gameEndedBlock = ^() {
 
     };

@@ -38,6 +38,11 @@
     
     [self initPlayer];
     _currentPlayerIndex = -1;
+    
+    SKSpriteNode* bgNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"bg_sand"]];
+    bgNode.zPosition = -100;
+    bgNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    [self addChild:bgNode];
 }
 
 
@@ -46,8 +51,8 @@
     myPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kMyPlayer];
     otherPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kOtherPlayer];
     
-    myPlayer.position = CGPointMake(180, 50);
-    otherPlayer.position = CGPointMake(180, 518);
+    myPlayer.position = CGPointMake(180, 30);
+    otherPlayer.position = CGPointMake(180, 548);
     
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
@@ -159,11 +164,11 @@
     NSLog(@"player fire");
     if (isMyPlayer) {
         [_networkingEngine sendShot:[myPlayer position].x];
-        startPoint = CGPointMake(myPlayer.position.x + 5, myPlayer.position.y + 11);
-        endPoint = CGPointMake(myPlayer.position.x, 580);
+        startPoint = CGPointMake(myPlayer.position.x + 10, myPlayer.position.y + 19);
+        endPoint = CGPointMake(myPlayer.position.x + 10, 580);
     } else {
-        startPoint = CGPointMake(otherPlayer.position.x + 5, otherPlayer.position.y - 11);
-        endPoint = CGPointMake(otherPlayer.position.x + 5, -3);
+        startPoint = CGPointMake(otherPlayer.position.x + 10, otherPlayer.position.y - 19);
+        endPoint = CGPointMake(otherPlayer.position.x + 10, -3);
     }
     
     [self shotBulletWithStartCord:startPoint AndEndPoint:endPoint];
