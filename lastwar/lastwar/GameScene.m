@@ -14,11 +14,13 @@
     MYSUInteger _currentPlayerIndex;
     MRPlayerSprite *myPlayer, *otherPlayer;
     NSTimer* playerActionTimer;
+    NSTimer* playerMoveTimer;
     float afterShotTime, afterMoveTime;
     BOOL matchEnded;
     
     float fastGuns, midGuns, slowGuns;
     
+    CGPoint startControllPoint;
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -78,8 +80,8 @@
 
 - (void)initPlayers
 {
-    myPlayer = [self createPlayerAtCoord:CGPointMake(180, 30) andType:kMyPlayer];
-    otherPlayer = [self createPlayerAtCoord:CGPointMake(180, 548) andType:kOtherPlayer];
+    myPlayer = [self createPlayerAtCoord:CGPointMake(180, 105) andType:kMyPlayer];
+    otherPlayer = [self createPlayerAtCoord:CGPointMake(180, 516) andType:kOtherPlayer];
 
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
@@ -91,17 +93,18 @@
 
 - (MRPlayerActionType)playerActionWithPoint:(CGPoint)point
 {
-    const float k = 160, maxX = 320;
+    const float mK = 100, fK = 220, maxY = 160;
     
     float x = point.x;
     float y = point.y;
     
-    if (x > 0 && y > 0 && x < k && y < k) {
+    if (x > 0 && x < mK && y < maxY) {
         return kPlayerMoveLeft;
-    } else if (x > k && x < maxX && y < k && y < k) {
-        return kPlayerMoveRight;
-    } else if (y > k) {
+    } else if (x > mK && x < fK &&  y < maxY){
         return kPlayerFire;
+        
+    } else if (x > fK && y < maxY) {
+        return kPlayerMoveRight;
     }
     return 0;
 }
@@ -115,11 +118,11 @@
             break;
         case kPlayerMoveRight:
             [self moveMyPlayerRight];
-            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime target:self selector:@selector(moveMyPlayerRight) userInfo:nil repeats:YES];
+            playerMoveTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime target:self selector:@selector(moveMyPlayerRight) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveLeft:
             [self moveMyPlayerLeft];
-            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime  target:self selector:@selector(moveMyPlayerLeft) userInfo:nil repeats:YES];
+            playerMoveTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime  target:self selector:@selector(moveMyPlayerLeft) userInfo:nil repeats:YES];
             break;
         default:
             break;
@@ -152,8 +155,15 @@
 - (void)stopPlayerActionWithType:(MRPlayerActionType)type
 {
     //?????
-    [playerActionTimer  invalidate];
+    if (playerActionTimer) {
+        [playerActionTimer  invalidate];
+    }
     playerActionTimer = nil;
+    
+    if (playerMoveTimer) {
+        [playerMoveTimer invalidate];
+    }
+    playerMoveTimer = nil;
 }
 
 - (void)myPlayerFire {
@@ -187,12 +197,36 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //Для переключения оружия
+    UITouch* touch = touches.allObjects[0];
+    float x = [touch locationInNode:self].x;
+    if (x < 100) {
+        [playerMoveTimer invalidate];
+        playerMoveTimer = nil;
+        [self moveWithFireWithType:kPlayerMoveLeft];
+    } else if (x > 220) {
+        [playerMoveTimer invalidate];
+        playerMoveTimer = nil;
+        [self moveWithFireWithType:kPlayerMoveRight];
+    } else if (x > 100 && x < 220) {
+        [playerMoveTimer invalidate];
+        playerMoveTimer = nil;
+    }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch* touch = touches.allObjects[0];
     [self stopPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
+
+    startControllPoint = CGPointMake(0, 0);
+}
+
+- (void)moveWithFireWithType:(MRPlayerActionType)type
+{
+    if (playerActionTimer) {
+        if (!playerMoveTimer) {
+            [self startPlayerActionWithType:type];
+        }
+    }
 }
 
 - (void)endGameWithWinner:(BOOL)myPlayerWin {
