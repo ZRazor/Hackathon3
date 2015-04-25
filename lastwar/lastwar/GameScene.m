@@ -12,13 +12,16 @@
     NSMutableArray *_players;
     MYSUInteger _currentPlayerIndex;
     MRPlayerSprite *myPlayer, *otherPlayer;
-    
+    NSTimer* playerActionTimer;
+    float afterShotTime, afterMoveTime;
 }
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         [self initializeGame];
     }
+    self->afterShotTime = 0.3;
+    self->afterMoveTime = 0.025;
     return self;
 }
 
@@ -26,7 +29,6 @@
     _players = [NSMutableArray arrayWithCapacity:2];
     
     [self initPlayer];
-
     _currentPlayerIndex = -1;
 }
 
@@ -47,19 +49,93 @@
     _players = [NSMutableArray arrayWithCapacity:2];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
+- (MRPlayerActionType)playerActionWithPoint:(CGPoint)point
+{
+    const float k = 160, maxX = 320;
+    
+    float x = point.x;
+    float y = point.y;
+    
+    if (x > 0 && y > 0 && x < k && y < k) {
+        return kPlayerMoveLeft;
+    } else if (x > k && x < maxX && y < k && y < k) {
+        return kPlayerMoveRight;
+    } else if (y > k) {
+        return kPlayerFire;
+    }
+    return 0;
+}
 
-    if (_currentPlayerIndex == -1) {
+- (void)startPlayerActionWithType:(MRPlayerActionType)type
+{
+    switch (type) {
+        case kPlayerFire:
+            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterShotTime target:self selector:@selector(playerFire) userInfo:nil repeats:YES];
+            break;
+        case kPlayerMoveRight:
+            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime target:self selector:@selector(movePlayerRight) userInfo:nil repeats:YES];
+            break;
+        case kPlayerMoveLeft:
+            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime  target:self selector:@selector(movePlayerLeft) userInfo:nil repeats:YES];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)stopPlayerActionWithType:(MRPlayerActionType)type
+{
+    [playerActionTimer  invalidate];
+    playerActionTimer = nil;
+}
+
+- (void)movePlayerRight
+{
+    if (myPlayer.position.x > 317 - myPlayer.size.width) {
         return;
     }
+    SKAction *moveAction = [SKAction moveTo:CGPointMake(myPlayer.position.x + 5, myPlayer.position.y) duration:afterMoveTime];
+    [myPlayer runAction:moveAction];
+    NSLog(@"move right");
+}
+
+- (void)movePlayerLeft
+{
+    if (myPlayer.position.x < 3 + myPlayer.size.width) {
+        return;
+    }
+    SKAction *moveAction = [SKAction moveTo:CGPointMake(myPlayer.position.x - 5, myPlayer.position.y) duration:afterMoveTime];
+    [myPlayer runAction:moveAction];
+    NSLog(@"move left");
+}
+
+- (void)playerFire
+{
+    NSLog(@"player fire");
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch* touch = touches.allObjects[0];
     
     [myPlayer setPosition:CGPointMake(myPlayer.position.x + 1, myPlayer.position.y)];
     
     [_networkingEngine sendMove:moveLeft];
+    
+    [self startPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
 }
 
--(void)update:(CFTimeInterval)currentTime {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //Для переключения оружия
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch* touch = touches.allObjects[0];
+    [self stopPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
+}
+
+- (void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     if (self.paused && _currentPlayerIndex == -1) {
         return;

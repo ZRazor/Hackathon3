@@ -56,7 +56,8 @@
     };
     // Present the scene.
     [skView presentScene:scene];
-
+    
+    return;
     //!
     _networkingEngine = [[MRMultiplayerNetworking alloc] init];
     _networkingEngine.delegate = scene;
@@ -68,11 +69,6 @@
     [super viewWillLayoutSubviews];
 
 }
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 
 - (BOOL)prefersStatusBarHidden {
     return YES;

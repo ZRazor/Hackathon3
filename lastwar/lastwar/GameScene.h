@@ -11,6 +11,12 @@
 #import "MRMultiplayerNetworking.h"
 #import "MRPlayerSprite.h"
 
+typedef enum {
+    kPlayerMoveRight = 1,
+    kPlayerMoveLeft = 2,
+    kPlayerFire = 3,
+} MRPlayerActionType;
+
 
 @interface GameScene : SKScene <MultiplayerNetworkingProtocol>
 @property (nonatomic, copy) void (^gameOverBlock)(BOOL didWin);

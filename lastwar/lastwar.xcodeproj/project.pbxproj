@@ -265,7 +265,7 @@
 				TargetAttributes = {
 					CE6A411E1AEA3B4700C94BED = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 44FPHB4323;
+						DevelopmentTeam = KJWPEX5SPQ;
 					};
 					CE6A413C1AEA3B4700C94BED = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -454,6 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = lastwar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -465,6 +466,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = lastwar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
