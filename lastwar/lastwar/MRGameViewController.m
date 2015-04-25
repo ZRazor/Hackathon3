@@ -57,9 +57,9 @@
     // Present the scene.
     [skView presentScene:scene];
 
-    #ifdef DEBUG
+    if (MULTI_PLAYER) {
         return;
-    #endif
+    }
 
     _networkingEngine = [[MRMultiplayerNetworking alloc] init];
     _networkingEngine.delegate = scene;
