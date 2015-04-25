@@ -51,8 +51,8 @@
     myPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kMyPlayer];
     otherPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kOtherPlayer];
     
-    myPlayer.position = CGPointMake(180, 30);
-    otherPlayer.position = CGPointMake(180, 548);
+    myPlayer.position = CGPointMake(180, 105);
+    otherPlayer.position = CGPointMake(180, 516);
     
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
