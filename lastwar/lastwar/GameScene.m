@@ -26,6 +26,10 @@
     CGPoint startControllPoint;
     
     MRPlayerActionType startAtActionType;
+    
+    SKSpriteNode *myHpProgress, *otherHpProgress;
+    
+    
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -109,14 +113,14 @@
     healthBar.zPosition = 101;
     [self addChild:healthBar];
     
-    SKSpriteNode *myHpProgress = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"hp_progress1"]];
+    myHpProgress = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"hp_progress1"]];
     myHpProgress.size = CGSizeMake(86, 8.6f);
     myHpProgress.position = CGPointMake(CGRectGetMidX(self.frame) - 15, 542);
     myHpProgress.anchorPoint = CGPointMake(1, 0);
     myHpProgress.zPosition = 101;
     [self addChild:myHpProgress];
     
-    SKSpriteNode *otherHpProgress = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"hp_progress2"]];
+    otherHpProgress = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"hp_progress2"]];
     otherHpProgress.size = CGSizeMake(86, 8.6f);
     otherHpProgress.position = CGPointMake(CGRectGetMidX(self.frame) + 15, 542);
     otherHpProgress.anchorPoint = CGPointMake(0, 0);
@@ -175,10 +179,20 @@
         bullet = (MRBulletNode *)[contact bodyA].node;
     }
     damObject.hp -= bullet.damage;
+    if (damObject == otherPlayer) {
+        SKAction *scaleAction = [SKAction scaleXTo:otherPlayer.hp/100.f duration:0.2];
+        [otherHpProgress runAction:scaleAction completion:^{}];
+    } else {
+        SKAction *scaleAction = [SKAction scaleXTo:myPlayer.hp/100.f duration:0.2];
+        [myHpProgress runAction:scaleAction completion:^{}];
+
+    }
+    NSLog(@"Damage -%d!", bullet.damage);
+    bullet.damage = 0;
     if ([damObject isKindOfClass:[MRBlockNode class]] && damObject.hp <= 0) {
         [damObject removeFromParent];
     }
-    NSLog(@"Damage -5!");
+    
     [bullet removeFromParent];
 }
 
@@ -383,7 +397,6 @@
     if (self.paused && _currentPlayerIndex == -1) {
         return;
     }
-
     if (myPlayer.hp <= 0) {
         [self endGameWithStatus:kLoseEnd];
     } else if (otherPlayer.hp <= 0) {
