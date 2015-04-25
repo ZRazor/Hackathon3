@@ -73,14 +73,22 @@
             playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterShotTime target:self selector:@selector(playerFire) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveRight:
-            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime target:self selector:@selector(movePlayerRight) userInfo:nil repeats:YES];
+            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime target:self selector:@selector(moveMyPlayerRight) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveLeft:
-            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime  target:self selector:@selector(movePlayerLeft) userInfo:nil repeats:YES];
+            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime  target:self selector:@selector(moveMyPlayerLeft) userInfo:nil repeats:YES];
             break;
         default:
             break;
     }
+}
+
+- (void)moveMyPlayerLeft {
+    [self movePlayerLeft:YES];
+}
+
+- (void)moveMyPlayerRight {
+    [self movePlayerRight:YES];
 }
 
 - (void)stopPlayerActionWithType:(MRPlayerActionType)type
@@ -89,23 +97,42 @@
     playerActionTimer = nil;
 }
 
-- (void)movePlayerRight
+- (void)movePlayerRight:(BOOL)isMyPlayer
 {
-    if (myPlayer.position.x > 317 - myPlayer.size.width) {
+    MRPlayerSprite *curPlayer;
+    if (isMyPlayer) {
+        curPlayer = myPlayer;
+    } else {
+        curPlayer = otherPlayer;
+    }
+    if (curPlayer.position.x > 317 - curPlayer.size.width) {
         return;
     }
-    SKAction *moveAction = [SKAction moveTo:CGPointMake(myPlayer.position.x + 5, myPlayer.position.y) duration:afterMoveTime];
-    [myPlayer runAction:moveAction];
+    if (isMyPlayer) {
+        [_networkingEngine sendMove:moveRight];
+    }
+    SKAction *moveAction = [SKAction moveTo:CGPointMake(curPlayer.position.x + 5, curPlayer.position.y) duration:afterMoveTime];
+    [curPlayer runAction:moveAction];
     NSLog(@"move right");
 }
 
-- (void)movePlayerLeft
+- (void)movePlayerLeft:(BOOL)isMyPlayer
 {
-    if (myPlayer.position.x < 3 + myPlayer.size.width) {
+    MRPlayerSprite *curPlayer;
+    if (isMyPlayer) {
+        curPlayer = myPlayer;
+    } else {
+        curPlayer = otherPlayer;
+    }
+    if (curPlayer.position.x < 3 + curPlayer.size.width) {
         return;
     }
-    SKAction *moveAction = [SKAction moveTo:CGPointMake(myPlayer.position.x - 5, myPlayer.position.y) duration:afterMoveTime];
-    [myPlayer runAction:moveAction];
+    if (isMyPlayer) {
+        [_networkingEngine sendMove:moveLeft];
+    }
+
+    SKAction *moveAction = [SKAction moveTo:CGPointMake(curPlayer.position.x - 5, curPlayer.position.y) duration:afterMoveTime];
+    [curPlayer runAction:moveAction];
     NSLog(@"move left");
 }
 
@@ -117,10 +144,6 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch* touch = touches.allObjects[0];
-    
-    [myPlayer setPosition:CGPointMake(myPlayer.position.x + 1, myPlayer.position.y)];
-    
-    [_networkingEngine sendMove:moveLeft];
     
     [self startPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
 }
@@ -157,8 +180,11 @@
 
 - (void)movePlayerAtIndex:(NSUInteger)index direction:(MoveDirection)direction {
     if (direction == moveLeft) {
-        [otherPlayer setPosition:CGPointMake(otherPlayer.position.x + 1, otherPlayer.position.y)];
+        [self movePlayerLeft:NO];
+    } else if (direction == moveRight) {
+        [self movePlayerRight:NO];
     }
+
     NSLog(@"Player %d moved to %d", index, direction);
 }
 

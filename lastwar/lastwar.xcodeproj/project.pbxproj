@@ -265,10 +265,11 @@
 				TargetAttributes = {
 					CE6A411E1AEA3B4700C94BED = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = KJWPEX5SPQ;
+						DevelopmentTeam = 44FPHB4323;
 					};
 					CE6A413C1AEA3B4700C94BED = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 44FPHB4323;
 						TestTargetID = CE6A411E1AEA3B4700C94BED;
 					};
 				};
@@ -476,6 +477,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -487,6 +490,7 @@
 				INFOPLIST_FILE = lastwarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lastwar.app/lastwar";
 			};
 			name = Debug;
@@ -495,6 +499,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -502,6 +508,7 @@
 				INFOPLIST_FILE = lastwarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lastwar.app/lastwar";
 			};
 			name = Release;

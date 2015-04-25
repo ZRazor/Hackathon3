@@ -56,9 +56,11 @@
     };
     // Present the scene.
     [skView presentScene:scene];
-    
-    return;
-    //!
+
+    #ifdef DEBUG
+        return;
+    #endif
+
     _networkingEngine = [[MRMultiplayerNetworking alloc] init];
     _networkingEngine.delegate = scene;
     scene.networkingEngine = _networkingEngine;

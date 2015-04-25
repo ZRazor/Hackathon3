@@ -1,3 +1,5 @@
+#define DEBUG
+
 @import GameKit;
 
 @protocol GameKitHelperDelegate
