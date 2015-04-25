@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "masks.h"
+#import "MRBlockNode.h"
 
 @implementation GameScene {
     NSMutableArray *_players;
@@ -46,6 +47,7 @@
     _players = [NSMutableArray arrayWithCapacity:2];
 
     [self initPlayers];
+
     _currentPlayerIndex = -1;
 
     self.physicsWorld.contactDelegate = self;
@@ -54,19 +56,26 @@
     bgNode.zPosition = -100;
     bgNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:bgNode];
+
+    //BLOCKS
+    MRBlockNode *block = [[MRBlockNode alloc] initWithPosition:CGPointMake(100, 300)];
+    [self addChild:block];
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    MRPlayerSprite *player;
+    MRDamagedObject *damObject;
     MRBulletNode *bullet;
-    if (![[contact bodyA] isKindOfClass:[MRPlayerSprite class]]) {
-        player = (MRPlayerSprite *)[contact bodyA].node;
+    if ([[contact bodyA].node isKindOfClass:[MRDamagedObject class]]) {
+        damObject = (MRDamagedObject *)[contact bodyA].node;
         bullet = (MRBulletNode *)[contact bodyB].node;
     } else {
-        player = (MRPlayerSprite *)[contact bodyB].node;
+        damObject = (MRDamagedObject *)[contact bodyB].node;
         bullet = (MRBulletNode *)[contact bodyA].node;
     }
-    player.hp -= bullet.damage;
+    damObject.hp -= bullet.damage;
+    if ([damObject isKindOfClass:[MRBlockNode class]] && damObject.hp <= 0) {
+        [damObject removeFromParent];
+    }
     NSLog(@"Damage -5!");
     [bullet removeFromParent];
 }

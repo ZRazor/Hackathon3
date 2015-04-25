@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "MRDamagedObject.h"
 
 typedef enum
 {
@@ -14,9 +15,7 @@ typedef enum
     kOtherPlayer = 2,
 } MRPlayerType;
 
-@interface MRPlayerSprite : SKSpriteNode
-
-@property int hp;
+@interface MRPlayerSprite : MRDamagedObject
 
 - (id)initWithPlayerType:(MRPlayerType)type;
 

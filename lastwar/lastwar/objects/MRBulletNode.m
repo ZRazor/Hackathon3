@@ -20,7 +20,7 @@
     self.position = startPoint;
     self.physicsBody = [SKPhysicsBody bodyWithTexture:self.texture size:self.texture.size];
     self.physicsBody.categoryBitMask = categoryBullets;
-    self.physicsBody.contactTestBitMask = categoryPlayers;
+    self.physicsBody.contactTestBitMask = categoryPlayers | categoryBlocks;
     self.physicsBody.collisionBitMask = 0x0;
 //    self.physicsBody.dynamic = NO;
 
