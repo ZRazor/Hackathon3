@@ -136,12 +136,12 @@
 }
 
 - (void)movePlayerToPos:(PlayerPosition)position player:(MRPlayerSprite *)player {
-//    if (position > self.size.width - player.size.width / 2) {
-//        position = self.size.width - player.size.width / 2;
-//    }
-//    if (position < 0 + player.size.width / 2) {
-//        position = player.size.width / 2;
-//    }
+    if (position > self.size.width - player.size.width / 2) {
+        position = self.size.width - player.size.width / 2;
+    }
+    if (position < 0 + player.size.width / 2) {
+        position = player.size.width / 2;
+    }
     SKAction *moveAction = [SKAction moveTo:CGPointMake(position, player.position.y) duration:afterMoveTime];
     [player runAction:moveAction];
 }
