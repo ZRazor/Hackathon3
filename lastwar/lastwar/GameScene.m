@@ -13,8 +13,8 @@
     NSMutableArray *_players;
     MYSUInteger _currentPlayerIndex;
     MRPlayerSprite *myPlayer, *otherPlayer;
-    NSTimer* playerActionTimer;
-    NSTimer* playerMoveTimer;
+    NSTimer *playerActionTimer;
+    NSTimer *playerMoveTimer;
     float afterShotTime, afterMoveTime;
     BOOL matchEnded;
     
@@ -46,6 +46,7 @@
     _players = [NSMutableArray arrayWithCapacity:2];
 
     [self initPlayers];
+    [self drawInterface];
     _currentPlayerIndex = -1;
 
     self.physicsWorld.contactDelegate = self;
@@ -55,6 +56,76 @@
     bgNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:bgNode];
 }
+
+#pragma mark - Interface
+
+- (void)drawInterface
+{
+    SKSpriteNode* bgBottonMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_bottom"]];
+    bgBottonMenu.size = CGSizeMake(320, 72);
+    bgBottonMenu.position = CGPointMake(CGRectGetMidX(self.frame), 36);
+
+    [self addChild:bgBottonMenu];
+    
+    _leftButtonBg = [[SKSpriteNode alloc] init];
+    _leftButtonBg.position = CGPointMake(50, 36);
+    _leftButtonBg.size = CGSizeMake(50, 50);
+    
+    _fireButtonBg = [[SKSpriteNode alloc] init];
+    _fireButtonBg.position = CGPointMake(160, 36);
+    _fireButtonBg.size = CGSizeMake(56, 50);
+    
+    _rightButtonBg = [[SKSpriteNode alloc] init];
+    _rightButtonBg.position = CGPointMake(270, 36);
+    _rightButtonBg.size = CGSizeMake(50, 50);
+    
+    [self setDefaultButtonTexture];
+    
+    [self addChild:_leftButtonBg];
+    [self addChild:_fireButtonBg];
+    [self addChild:_rightButtonBg];
+    
+}
+
+- (void)setDefaultButtonTexture
+{
+    [self setDefaultLeftTexture];
+    [self setDefaultFireTexture];
+    [self setDefaultRightTexture];
+}
+
+- (void)setDefaultLeftTexture
+{
+    _leftButtonBg.texture = [SKTexture textureWithImageNamed:@"btn_left_0"];
+}
+
+- (void)setDefaultFireTexture
+{
+    _fireButtonBg.texture = [SKTexture textureWithImageNamed:@"btn_fire_0"];
+}
+
+- (void)setDefaultRightTexture
+{
+    _rightButtonBg.texture = [SKTexture textureWithImageNamed:@"btn_right_0"];
+}
+
+- (void)setActiveLeftTexture
+{
+    _leftButtonBg.texture = [SKTexture textureWithImageNamed:@"btn_left_1"];
+}
+
+- (void)setActiveFireTexture
+{
+    _fireButtonBg.texture = [SKTexture textureWithImageNamed:@"btn_fire_1"];
+}
+
+- (void)setActiveRightTexture
+{
+    _rightButtonBg.texture = [SKTexture textureWithImageNamed:@"btn_right_1"];
+}
+
+
+#pragma mark - Physics
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     MRPlayerSprite *player;
@@ -84,8 +155,8 @@
 
 - (void)initPlayers
 {
-    myPlayer = [self createPlayerAtCoord:CGPointMake(180, 105) andType:kMyPlayer];
-    otherPlayer = [self createPlayerAtCoord:CGPointMake(180, 516) andType:kOtherPlayer];
+    myPlayer = [self createPlayerAtCoord:CGPointMake(160, 105) andType:kMyPlayer];
+    otherPlayer = [self createPlayerAtCoord:CGPointMake(160, 516) andType:kOtherPlayer];
 
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
@@ -118,14 +189,17 @@
     switch (type) {
         case kPlayerFire:
             [self myPlayerFire];
+            [self setActiveFireTexture];
             playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterShotTime target:self selector:@selector(myPlayerFire) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveRight:
             [self moveMyPlayerRight];
+            [self setActiveRightTexture];
             playerMoveTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime target:self selector:@selector(moveMyPlayerRight) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveLeft:
             [self moveMyPlayerLeft];
+            [self setActiveLeftTexture];
             playerMoveTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime  target:self selector:@selector(moveMyPlayerLeft) userInfo:nil repeats:YES];
             break;
         default:
@@ -217,6 +291,8 @@
         playerMoveTimer = nil;
         [self moveWithFireWithType:kPlayerMoveRight];
     } else if (x > 100 && x < 220) {
+        [self setDefaultLeftTexture];
+        [self setDefaultRightTexture];
         [playerMoveTimer invalidate];
         playerMoveTimer = nil;
     }
@@ -226,7 +302,7 @@
     startAtActionType = 0;
     touch = touches.allObjects[0];
     [self stopPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
-
+    [self setDefaultButtonTexture];
     startControllPoint = CGPointMake(0, 0);
 }
 
