@@ -34,7 +34,7 @@ typedef struct {
 
 typedef struct {
     Message message;
-    MoveDirection direction;
+    PlayerPosition position;
 } MessageMove;
 
 
@@ -84,10 +84,10 @@ typedef struct {
     }
 }
 
-- (void)sendMove:(MoveDirection)direction {
+- (void)sendMove:(PlayerPosition)position {
     MessageMove messageMove;
     messageMove.message.messageType = kMessageTypeMove;
-    messageMove.direction = direction;
+    messageMove.position = position;
     NSData *data = [NSData dataWithBytes:&messageMove
                                   length:sizeof(MessageMove)];
     [self sendData:data];
@@ -283,7 +283,7 @@ typedef struct {
     } else if (message->messageType == kMessageTypeMove) {
         NSLog(@"Move message received");
         MessageMove *messageMove = (MessageMove*)[data bytes];
-        [self.delegate movePlayerAtIndex:[self indexForPlayerWithId:playerID] direction:messageMove->direction];
+        [self.delegate movePlayerAtIndex:[self indexForPlayerWithId:playerID] position:messageMove->position];
     } else if (message->messageType == kMessageTypeShot) {
         NSLog(@"Shot message received");
         MessageShot *messageShot = (MessageShot*)[data bytes];

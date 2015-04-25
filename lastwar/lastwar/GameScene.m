@@ -100,11 +100,23 @@
 }
 
 - (void)moveMyPlayerLeft {
-    [self movePlayerLeft:YES];
+    PlayerPosition newPos = myPlayer.position.x - 5;
+    [_networkingEngine sendMove:newPos];
+    [self movePlayerToPos:newPos player:myPlayer];
+}
+
+- (void)movePlayerToPos:(PlayerPosition)position player:(MRPlayerSprite *)player {
+    if (myPlayer.position.x > 317 - myPlayer.size.width) {
+        return;
+    }
+    SKAction *moveAction = [SKAction moveTo:CGPointMake(position, player.position.y) duration:afterMoveTime];
+    [player runAction:moveAction];
 }
 
 - (void)moveMyPlayerRight {
-    [self movePlayerRight:YES];
+    PlayerPosition newPos = myPlayer.position.x + 5;
+    [_networkingEngine sendMove:newPos];
+    [self movePlayerToPos:newPos player:myPlayer];
 }
 
 - (void)stopPlayerActionWithType:(MRPlayerActionType)type
@@ -113,62 +125,24 @@
     playerActionTimer = nil;
 }
 
-- (void)movePlayerRight:(BOOL)isMyPlayer
-{
-    MRPlayerSprite *curPlayer;
-    if (isMyPlayer) {
-        curPlayer = myPlayer;
-    } else {
-        curPlayer = otherPlayer;
-    }
-    if (curPlayer.position.x > 317 - curPlayer.size.width) {
-        return;
-    }
-    if (isMyPlayer) {
-        [_networkingEngine sendMove:moveRight];
-    }
-    SKAction *moveAction = [SKAction moveTo:CGPointMake(curPlayer.position.x + 5, curPlayer.position.y) duration:afterMoveTime];
-    [curPlayer runAction:moveAction];
-    NSLog(@"move right");
-}
-
-- (void)movePlayerLeft:(BOOL)isMyPlayer
-{
-    MRPlayerSprite *curPlayer;
-    if (isMyPlayer) {
-        curPlayer = myPlayer;
-    } else {
-        curPlayer = otherPlayer;
-    }
-    if (curPlayer.position.x < 3 + curPlayer.size.width) {
-        return;
-    }
-    if (isMyPlayer) {
-        [_networkingEngine sendMove:moveLeft];
-    }
-
-    SKAction *moveAction = [SKAction moveTo:CGPointMake(curPlayer.position.x - 5, curPlayer.position.y) duration:afterMoveTime];
-    [curPlayer runAction:moveAction];
-    NSLog(@"move left");
-}
-
 - (void)myPlayerFire {
-    [self playerFire:YES];
+    [_networkingEngine sendShot:[myPlayer position].x];
+    [self playerFire:myPlayer position:[myPlayer position].x];
 }
 
-- (void)playerFire:(BOOL)isMyPlayer
+- (void)playerFire:(MRPlayerSprite *)player position:(PlayerPosition)position
 {
-    CGPoint startPoint = CGPointMake(0, 0);
-    CGPoint endPoint = CGPointMake(0, 0);
+    CGPoint startPoint;
+    CGPoint endPoint;
     
     NSLog(@"player fire");
-    if (isMyPlayer) {
-        [_networkingEngine sendShot:[myPlayer position].x];
-        startPoint = CGPointMake(myPlayer.position.x + 10, myPlayer.position.y + 19);
-        endPoint = CGPointMake(myPlayer.position.x + 10, 580);
+    
+    if (player == myPlayer) {
+        startPoint = CGPointMake(position + 10, myPlayer.position.y + 19);
+        endPoint = CGPointMake(position + 10, 580);
     } else {
-        startPoint = CGPointMake(otherPlayer.position.x + 10, otherPlayer.position.y - 19);
-        endPoint = CGPointMake(otherPlayer.position.x + 10, -3);
+        startPoint = CGPointMake(position + 10, otherPlayer.position.y - 19);
+        endPoint = CGPointMake(position + 10, -3);
     }
     
     [self shotBulletWithStartCord:startPoint AndEndPoint:endPoint];
@@ -222,18 +196,16 @@
     self.gameStartBlock();
 }
 
-- (void)movePlayerAtIndex:(NSUInteger)index direction:(MoveDirection)direction {
-    if (direction == moveLeft) {
-        [self movePlayerLeft:NO];
-    } else if (direction == moveRight) {
-        [self movePlayerRight:NO];
-    }
-
-    NSLog(@"Player %d moved to %d", index, direction);
+- (void)movePlayerAtIndex:(NSUInteger)index position:(PlayerPosition)position {
+    [self movePlayerToPos:position player:otherPlayer];
+    NSLog(@"Player %d moved to %f", index, position);
 }
 
 - (void)shotPlayerAtIndex:(NSUInteger)index playerPosition:(PlayerPosition)position {
-    [self playerFire:NO];
+    if (otherPlayer.position.x != position) {
+        [self movePlayerToPos:position player:otherPlayer];
+    }
+    [self playerFire:otherPlayer position:position];
     NSLog(@"Player %d shot at %f", index, position);
 }
 

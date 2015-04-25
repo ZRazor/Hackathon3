@@ -1,6 +1,5 @@
 #import "MRGameKitHelper.h"
 
-typedef uint32_t MoveDirection;
 typedef CGFloat PlayerPosition;
 #define moveLeft 1
 #define moveRight 2
@@ -11,7 +10,7 @@ typedef unsigned int MYSUInteger;
 @protocol MultiplayerNetworkingProtocol <NSObject>
 - (void)matchEnded;
 - (void)setCurrentPlayerIndex:(NSUInteger)index;
-- (void)movePlayerAtIndex:(NSUInteger)index direction:(MoveDirection)direction;
+- (void)movePlayerAtIndex:(NSUInteger)index position:(PlayerPosition)position;
 - (void)shotPlayerAtIndex:(NSUInteger)index playerPosition:(PlayerPosition)direction;
 - (void)gameOver:(BOOL)player1Won;
 - (void)setPlayerAliases:(NSArray*)playerAliases;
@@ -19,7 +18,7 @@ typedef unsigned int MYSUInteger;
 
 @interface MRMultiplayerNetworking : NSObject<GameKitHelperDelegate>
 @property (nonatomic, assign) id<MultiplayerNetworkingProtocol> delegate;
-- (void)sendMove:(MoveDirection)direction;
+- (void)sendMove:(PlayerPosition)position;
 - (void)sendGameEnd:(BOOL)player1Won;
 - (void)sendShot:(PlayerPosition)position;
 @end
