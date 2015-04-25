@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "masks.h"
+#import "MRBlockNode.h"
 
 @implementation GameScene {
     NSMutableArray *_players;
@@ -55,6 +56,10 @@
     bgNode.zPosition = -100;
     bgNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:bgNode];
+
+    //BLOCKS
+    MRBlockNode *block = [[MRBlockNode alloc] initWithPosition:CGPointMake(100, 300)];
+    [self addChild:block];
 }
 
 #pragma mark - Interface
@@ -128,16 +133,19 @@
 #pragma mark - Physics
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    MRPlayerSprite *player;
+    MRDamagedObject *damObject;
     MRBulletNode *bullet;
-    if (![[contact bodyA] isKindOfClass:[MRPlayerSprite class]]) {
-        player = (MRPlayerSprite *)[contact bodyA].node;
+    if ([[contact bodyA].node isKindOfClass:[MRDamagedObject class]]) {
+        damObject = (MRDamagedObject *)[contact bodyA].node;
         bullet = (MRBulletNode *)[contact bodyB].node;
     } else {
-        player = (MRPlayerSprite *)[contact bodyB].node;
+        damObject = (MRDamagedObject *)[contact bodyB].node;
         bullet = (MRBulletNode *)[contact bodyA].node;
     }
-    player.hp -= bullet.damage;
+    damObject.hp -= bullet.damage;
+    if ([damObject isKindOfClass:[MRBlockNode class]] && damObject.hp <= 0) {
+        [damObject removeFromParent];
+    }
     NSLog(@"Damage -5!");
     [bullet removeFromParent];
 }
@@ -258,10 +266,10 @@
     
     if (player == myPlayer) {
         startPoint = CGPointMake(position + 10, myPlayer.position.y + 30);
-        endPoint = CGPointMake(position + 10, 580);
+        endPoint = CGPointMake(position + 10, 600);
     } else {
         startPoint = CGPointMake(position + 10, otherPlayer.position.y - 30);
-        endPoint = CGPointMake(position + 10, -3);
+        endPoint = CGPointMake(position + 10, -20);
     }
     
     [self shotBulletWithStartCord:startPoint AndEndPoint:endPoint];

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */; };
 		24034393598AC19B490F66FC /* MRGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 240344FD15D15013A4D153FE /* MRGameKitHelper.m */; };
+		240346CB7D847416B4B0E277 /* MRDamagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2403433DF5DC146597AB0572 /* MRDamagedObject.m */; };
+		24034BE165E4435C755B9736 /* MRBlockNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 240348590E46310695B7F8FD /* MRBlockNode.m */; };
 		3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */; };
 		31F23A5A1AEB669000864981 /* MRGameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F23A591AEB669000864981 /* MRGameOverViewController.m */; };
 		CE6A41251AEA3B4700C94BED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41241AEA3B4700C94BED /* main.m */; };
@@ -37,10 +39,14 @@
 
 /* Begin PBXFileReference section */
 		240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMultiplayerNetworking.m; sourceTree = "<group>"; };
+		2403433DF5DC146597AB0572 /* MRDamagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRDamagedObject.m; sourceTree = "<group>"; };
 		240344FD15D15013A4D153FE /* MRGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameKitHelper.m; sourceTree = "<group>"; };
 		2403452668A6D40FA5497842 /* MRMultiplayerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMultiplayerNetworking.h; sourceTree = "<group>"; };
 		240347FC07B4E7FC7D27BD22 /* MRGameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameKitHelper.h; sourceTree = "<group>"; };
+		240348590E46310695B7F8FD /* MRBlockNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlockNode.m; sourceTree = "<group>"; };
 		24034BD93D09B4E2FDA8DF96 /* matchEndType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matchEndType.h; sourceTree = "<group>"; };
+		24034EC28CACE8A26068029D /* MRBlockNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlockNode.h; sourceTree = "<group>"; };
+		24034F796197F0B290A395F5 /* MRDamagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRDamagedObject.h; sourceTree = "<group>"; };
 		24034FB5DB67394A16E6115E /* masks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = masks.h; sourceTree = "<group>"; };
 		3125649A1AEA4E7600EE3690 /* MRMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMenuViewController.h; sourceTree = "<group>"; };
 		3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMenuViewController.m; sourceTree = "<group>"; };
@@ -234,6 +240,10 @@
 				CEF1F5B31AEB2AFD00A01D7E /* MRBulletNode.h */,
 				CEF1F5B41AEB2AFD00A01D7E /* MRBulletNode.m */,
 				24034FB5DB67394A16E6115E /* masks.h */,
+				240348590E46310695B7F8FD /* MRBlockNode.m */,
+				24034EC28CACE8A26068029D /* MRBlockNode.h */,
+				2403433DF5DC146597AB0572 /* MRDamagedObject.m */,
+				24034F796197F0B290A395F5 /* MRDamagedObject.h */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -352,6 +362,8 @@
 				31F23A5A1AEB669000864981 /* MRGameOverViewController.m in Sources */,
 				CEF1F5B51AEB2AFD00A01D7E /* MRBulletNode.m in Sources */,
 				24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */,
+				24034BE165E4435C755B9736 /* MRBlockNode.m in Sources */,
+				240346CB7D847416B4B0E277 /* MRDamagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
