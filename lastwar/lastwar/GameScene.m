@@ -47,7 +47,7 @@
     otherPlayer = [[MRPlayerSprite alloc] initWithPlayerType:kOtherPlayer];
     
     myPlayer.position = CGPointMake(180, 50);
-    otherPlayer.position = CGPointMake(180, 500);
+    otherPlayer.position = CGPointMake(180, 518);
     
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
@@ -159,11 +159,11 @@
     NSLog(@"player fire");
     if (isMyPlayer) {
         [_networkingEngine sendShot:[myPlayer position].x];
-        startPoint = myPlayer.position;
+        startPoint = CGPointMake(myPlayer.position.x + 5, myPlayer.position.y + 11);
         endPoint = CGPointMake(myPlayer.position.x, 580);
     } else {
-        startPoint = otherPlayer.position;
-        endPoint = CGPointMake(otherPlayer.xScale, -3);
+        startPoint = CGPointMake(otherPlayer.position.x - 5, otherPlayer.position.y - 11);
+        endPoint = CGPointMake(otherPlayer.position.x + 5, -3);
     }
     
     [self shotBulletWithStartCord:startPoint AndEndPoint:endPoint];
