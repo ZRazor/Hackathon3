@@ -24,4 +24,7 @@ typedef enum {
 @property (nonatomic, copy) void (^gameEndedBlock)();
 @property (nonatomic, copy) void (^gameStartBlock)();
 @property (nonatomic, strong) MRMultiplayerNetworking *networkingEngine;
+
+@property (nonatomic, strong) SKSpriteNode *rightButtonBg, *leftButtonBg, *fireButtonBg;
+
 @end
