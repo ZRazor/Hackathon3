@@ -48,6 +48,7 @@
     scene.scaleMode = SKSceneScaleModeResizeFill;
 
     scene.gameOverBlock = ^(MRMatchEndType mEndType) {
+        [skView presentScene:nil];
         endType = mEndType;
         [self performSegueWithIdentifier:@"gameOverSegue" sender:self];
     };

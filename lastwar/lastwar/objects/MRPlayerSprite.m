@@ -19,14 +19,16 @@
         self = [super initWithTexture:[SKTexture textureWithImageNamed:@"robot2"] color:nil size:CGSizeMake(32, 32)];
     }
 
-    self.hp = 100000000;
+    self.hp = 100;
 
     self.physicsBody =
             [SKPhysicsBody bodyWithTexture:self.texture size:self.texture.size];
     self.physicsBody.categoryBitMask = categoryPlayers;
     self.physicsBody.contactTestBitMask = categoryBullets;
-    self.physicsBody.usesPreciseCollisionDetection = YES;
+    self.physicsBody.collisionBitMask = 0x0;
+    self.physicsBody.usesPreciseCollisionDetection = NO;
     self.physicsBody.affectedByGravity = NO;
+    self.physicsBody.dynamic = NO;
 
     if (!self) {
         return NULL;

@@ -184,10 +184,10 @@
     
     if (player == myPlayer) {
         startPoint = CGPointMake(position + 10, myPlayer.position.y + 30);
-        endPoint = CGPointMake(position + 10, 580);
+        endPoint = CGPointMake(position + 10, 600);
     } else {
         startPoint = CGPointMake(position + 10, otherPlayer.position.y - 30);
-        endPoint = CGPointMake(position + 10, -3);
+        endPoint = CGPointMake(position + 10, -20);
     }
     
     [self shotBulletWithStartCord:startPoint AndEndPoint:endPoint];
