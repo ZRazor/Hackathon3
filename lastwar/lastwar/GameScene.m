@@ -277,11 +277,22 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (startAtActionType != kPlayerFire) {
-        return;
-    }
     touch = touches.allObjects[0];
     float x = [touch locationInNode:self].x;
+    
+    if (startAtActionType != kPlayerFire) {
+        if (startAtActionType == kPlayerMoveLeft && x > 220) {
+            [playerMoveTimer invalidate];
+            playerMoveTimer = nil;
+            [self setDefaultLeftTexture];
+        } else if (startAtActionType == kPlayerMoveRight && x < 100) {
+            [playerMoveTimer invalidate];
+            playerMoveTimer = nil;
+            [self setDefaultRightTexture];
+        }
+        return;
+    }
+    
     if (x < 100) {
         [playerMoveTimer invalidate];
         playerMoveTimer = nil;
