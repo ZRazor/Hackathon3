@@ -19,7 +19,7 @@
         self = [super initWithTexture:[SKTexture textureWithImageNamed:@"robot2"] color:nil size:CGSizeMake(32, 32)];
     }
 
-    self.hp = 100;
+    self.hp = 100000000;
 
     self.physicsBody =
             [SKPhysicsBody bodyWithTexture:self.texture size:self.texture.size];
