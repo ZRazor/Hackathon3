@@ -184,6 +184,7 @@
 
 - (void)setCurrentPlayerIndex:(NSUInteger)index {
     _currentPlayerIndex = index;
+    self.gameStartBlock();
 }
 
 - (void)movePlayerAtIndex:(NSUInteger)index direction:(MoveDirection)direction {

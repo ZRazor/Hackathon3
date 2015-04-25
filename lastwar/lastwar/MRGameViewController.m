@@ -54,8 +54,11 @@
 //        gameOverViewController.didWin = didWin;
 //        [self.navigationController pushViewController:gameOverViewController animated:YES];
     };
-    // Present the scene.
-    [skView presentScene:scene];
+
+    scene.gameStartBlock = ^() {
+        [skView presentScene:scene];
+    };
+
 
     if (MULTI_PLAYER) {
         return;
