@@ -15,6 +15,7 @@
     MRPlayerSprite *myPlayer, *otherPlayer;
     NSTimer* playerActionTimer;
     float afterShotTime, afterMoveTime;
+    BOOL matchEnded;
     
     float fastGuns, midGuns, slowGuns;
     
@@ -24,6 +25,7 @@
     if (self = [super initWithSize:size]) {
         [self initializeGame];
     }
+    matchEnded = NO;
     self->afterShotTime = 0.3;
     self->afterMoveTime = 0.025;
     
@@ -49,9 +51,18 @@
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    [[contact bodyA].node setHidden:YES];
-    [[contact bodyB].node setHidden:YES];
-    NSLog(@"Contact begin");
+    MRPlayerSprite *player;
+    MRBulletNode *bullet;
+    if (![[contact bodyA] isKindOfClass:[MRPlayerSprite class]]) {
+        player = (MRPlayerSprite *)[contact bodyA].node;
+        bullet = (MRBulletNode *)[contact bodyB].node;
+    } else {
+        player = (MRPlayerSprite *)[contact bodyB].node;
+        bullet = (MRBulletNode *)[contact bodyA].node;
+    }
+    player.hp -= bullet.damage;
+    NSLog(@"Damage -5!");
+    [bullet removeFromParent];
 }
 
 - (void)didEndContact:(SKPhysicsContact *)contact {
@@ -122,9 +133,12 @@
 }
 
 - (void)movePlayerToPos:(PlayerPosition)position player:(MRPlayerSprite *)player {
-    if (player.position.x > 317 - player.size.width) {
-        return;
-    }
+//    if (position > self.size.width - player.size.width / 2) {
+//        position = self.size.width - player.size.width / 2;
+//    }
+//    if (position < 0 + player.size.width / 2) {
+//        position = player.size.width / 2;
+//    }
     SKAction *moveAction = [SKAction moveTo:CGPointMake(position, player.position.y) duration:afterMoveTime];
     [player runAction:moveAction];
 }
@@ -181,10 +195,28 @@
     [self stopPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
 }
 
+- (void)endGameWithWinner:(BOOL)myPlayerWin {
+    if (matchEnded) { return; }
+    self.paused = YES;
+    matchEnded = YES;
+    _currentPlayerIndex = -1;
+
+    [_networkingEngine sendGameEnd:myPlayerWin];
+    if (self.gameOverBlock) {
+        self.gameOverBlock(myPlayerWin);
+    }
+}
+
 - (void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     if (self.paused && _currentPlayerIndex == -1) {
         return;
+    }
+
+    if (myPlayer.hp <= 0) {
+        [self endGameWithWinner:NO];
+    } else if (otherPlayer.hp <= 0) {
+        [self endGameWithWinner:YES];
     }
 
 
@@ -196,7 +228,7 @@
 
 - (void)shotBulletWithStartCord:(CGPoint)startPoint AndEndPoint:(CGPoint)endPoint
 {
-    MRBulletNode* bullet = [[MRBulletNode alloc] initWithSpeed:1 AndDemage:50 AndStartPoint:startPoint];
+    MRBulletNode* bullet = [[MRBulletNode alloc] initWithSpeed:1 AndDamage:10 AndStartPoint:startPoint];
     SKAction *moveAction = [SKAction moveTo:endPoint duration:bullet.speed];
     [bullet runAction:moveAction];
     [self addChild:bullet];
@@ -216,26 +248,26 @@
 }
 
 - (void)movePlayerAtIndex:(NSUInteger)index position:(PlayerPosition)position {
-    [self movePlayerToPos:position player:otherPlayer];
     NSLog(@"Player %d moved to %f", index, position);
+    [self movePlayerToPos:position player:otherPlayer];
 }
 
 - (void)shotPlayerAtIndex:(NSUInteger)index playerPosition:(PlayerPosition)position {
+    NSLog(@"Player %d shot at %f", index, position);
     if (otherPlayer.position.x != position) {
         [self movePlayerToPos:position player:otherPlayer];
     }
     [self playerFire:otherPlayer position:position];
-    NSLog(@"Player %d shot at %f", index, position);
 }
 
 
-- (void)gameOver:(BOOL)player1Won {
-    BOOL didLocalPlayerWin = YES;
-    if (player1Won) {
-        didLocalPlayerWin = NO;
-    }
+- (void)gameOver:(BOOL)otherPlayerWin {
+    if (matchEnded) { return; }
+    self.paused = YES;
+    matchEnded = YES;
+    _currentPlayerIndex = -1;
     if (self.gameOverBlock) {
-        self.gameOverBlock(didLocalPlayerWin);
+        self.gameOverBlock(!otherPlayerWin);
     }
 }
 

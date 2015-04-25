@@ -10,6 +10,7 @@
 		24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */; };
 		24034393598AC19B490F66FC /* MRGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 240344FD15D15013A4D153FE /* MRGameKitHelper.m */; };
 		3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */; };
+		31F23A5A1AEB669000864981 /* MRGameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F23A591AEB669000864981 /* MRGameOverViewController.m */; };
 		CE6A41251AEA3B4700C94BED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41241AEA3B4700C94BED /* main.m */; };
 		CE6A41281AEA3B4700C94BED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41271AEA3B4700C94BED /* AppDelegate.m */; };
 		CE6A412B1AEA3B4700C94BED /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A412A1AEA3B4700C94BED /* GameScene.m */; };
@@ -42,6 +43,8 @@
 		24034FB5DB67394A16E6115E /* masks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = masks.h; sourceTree = "<group>"; };
 		3125649A1AEA4E7600EE3690 /* MRMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMenuViewController.h; sourceTree = "<group>"; };
 		3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMenuViewController.m; sourceTree = "<group>"; };
+		31F23A581AEB669000864981 /* MRGameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameOverViewController.h; sourceTree = "<group>"; };
+		31F23A591AEB669000864981 /* MRGameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameOverViewController.m; sourceTree = "<group>"; };
 		CE6A411F1AEA3B4700C94BED /* lastwar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lastwar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6A41231AEA3B4700C94BED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6A41241AEA3B4700C94BED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +96,15 @@
 				240340CFDEA291704B21D783 /* MRMultiplayerNetworking.m */,
 			);
 			name = gamekit;
+			sourceTree = "<group>";
+		};
+		31F23A571AEB668000864981 /* gameover */ = {
+			isa = PBXGroup;
+			children = (
+				31F23A581AEB669000864981 /* MRGameOverViewController.h */,
+				31F23A591AEB669000864981 /* MRGameOverViewController.m */,
+			);
+			name = gameover;
 			sourceTree = "<group>";
 		};
 		CE6A41161AEA3B4700C94BED = {
@@ -157,6 +169,7 @@
 		CE6A414D1AEA3C3A00C94BED /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				31F23A571AEB668000864981 /* gameover */,
 				CE6A41521AEA6B1C00C94BED /* splash */,
 				CE6A41511AEA3CCA00C94BED /* game */,
 				CE6A41501AEA3CA400C94BED /* mainmenu */,
@@ -334,6 +347,7 @@
 				CE6A41591AEA7A9900C94BED /* MRPlayerSprite.m in Sources */,
 				24034393598AC19B490F66FC /* MRGameKitHelper.m in Sources */,
 				3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */,
+				31F23A5A1AEB669000864981 /* MRGameOverViewController.m in Sources */,
 				CEF1F5B51AEB2AFD00A01D7E /* MRBulletNode.m in Sources */,
 				24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */,
 			);

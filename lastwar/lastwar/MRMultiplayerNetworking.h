@@ -1,6 +1,6 @@
 #import "MRGameKitHelper.h"
 
-typedef CGFloat PlayerPosition;
+typedef float PlayerPosition;
 #define moveLeft 1
 #define moveRight 2
 

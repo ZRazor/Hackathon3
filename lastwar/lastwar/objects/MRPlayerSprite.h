@@ -16,6 +16,8 @@ typedef enum
 
 @interface MRPlayerSprite : SKSpriteNode
 
+@property int hp;
+
 - (id)initWithPlayerType:(MRPlayerType)type;
 
 @end

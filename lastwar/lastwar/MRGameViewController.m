@@ -9,6 +9,7 @@
 #import "MRGameViewController.h"
 #import "GameScene.h"
 #import "MRMultiplayerNetworking.h"
+#import "MRGameOverViewController.h"
 
 @implementation SKScene (Unarchive)
 
@@ -31,6 +32,7 @@
 
 @implementation MRGameViewController {
     MRMultiplayerNetworking *_networkingEngine;
+    BOOL localDidWin;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -42,18 +44,16 @@
 //    skView.showsNodeCount = YES;
 
     // Create and configure the scene.
-    GameScene* scene = [GameScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    GameScene* scene = [GameScene sceneWithSize:CGSizeMake(320, 568)];
+    scene.scaleMode = SKSceneScaleModeResizeFill;
     
-    //background
     scene.gameEndedBlock = ^() {
 
     };
 
     scene.gameOverBlock = ^(BOOL didWin) {
-//        GameOverViewController *gameOverViewController = (GameOverViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"GameOverViewController"];
-//        gameOverViewController.didWin = didWin;
-//        [self.navigationController pushViewController:gameOverViewController animated:YES];
+        localDidWin = didWin;
+        [self performSegueWithIdentifier:@"gameOverSegue" sender:self];
     };
     
     if (OFFLINE_GAME) {
@@ -78,6 +78,13 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"gameOverSegue"]) {
+        MRGameOverViewController *gameOverViewController = segue.destinationViewController;
+        gameOverViewController.didWin = localDidWin;
+    }
 }
 
 - (BOOL)prefersStatusBarHidden {
