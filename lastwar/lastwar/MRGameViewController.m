@@ -32,13 +32,11 @@
 
 @implementation MRGameViewController {
     MRMultiplayerNetworking *_networkingEngine;
-    BOOL localDidWin;
-    BOOL matchError;
+    MRMatchEndType endType;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    matchError = NO;
 
     SKView *skView = (SKView*)self.view;
 
@@ -48,14 +46,9 @@
     // Create and configure the scene.
     GameScene* scene = [GameScene sceneWithSize:CGSizeMake(320, 568)];
     scene.scaleMode = SKSceneScaleModeResizeFill;
-    
-    scene.gameEndedBlock = ^() {
-        matchError = YES;
-        [self performSegueWithIdentifier:@"gameOverSegue" sender:self];
-    };
 
-    scene.gameOverBlock = ^(BOOL didWin) {
-        localDidWin = didWin;
+    scene.gameOverBlock = ^(MRMatchEndType mEndType) {
+        endType = mEndType;
         [self performSegueWithIdentifier:@"gameOverSegue" sender:self];
     };
     
@@ -86,10 +79,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameOverSegue"]) {
         MRGameOverViewController *gameOverViewController = segue.destinationViewController;
-        if (matchError) {
-            gameOverViewController.matchError = YES;
-        }
-        gameOverViewController.didWin = localDidWin;
+        gameOverViewController.endType = endType;
     }
 }
 

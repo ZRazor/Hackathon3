@@ -229,15 +229,15 @@
     }
 }
 
-- (void)endGameWithWinner:(BOOL)myPlayerWin {
+- (void)endGameWithStatus:(MRMatchEndType)endType {
     if (matchEnded) { return; }
     self.paused = YES;
     matchEnded = YES;
     _currentPlayerIndex = -1;
 
-    [_networkingEngine sendGameEnd:myPlayerWin];
+    [_networkingEngine sendGameEnd:(endType == kWinEnd)];
     if (self.gameOverBlock) {
-        self.gameOverBlock(myPlayerWin);
+        self.gameOverBlock(endType);
     }
 }
 
@@ -248,9 +248,9 @@
     }
 
     if (myPlayer.hp <= 0) {
-        [self endGameWithWinner:NO];
+        [self endGameWithStatus:kLoseEnd];
     } else if (otherPlayer.hp <= 0) {
-        [self endGameWithWinner:YES];
+        [self endGameWithStatus:kWinEnd];
     }
 
 
@@ -295,13 +295,13 @@
 }
 
 
-- (void)gameOver:(BOOL)otherPlayerWin {
+- (void)gameOver:(MRMatchEndType) endType {
     if (matchEnded) { return; }
     self.paused = YES;
     matchEnded = YES;
     _currentPlayerIndex = -1;
     if (self.gameOverBlock) {
-        self.gameOverBlock(!otherPlayerWin);
+        self.gameOverBlock(endType);
     }
 }
 

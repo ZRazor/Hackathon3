@@ -13,7 +13,7 @@ typedef unsigned int MYSUInteger;
 - (void)setCurrentPlayerIndex:(NSUInteger)index;
 - (void)movePlayerAtIndex:(NSUInteger)index position:(PlayerPosition)position;
 - (void)shotPlayerAtIndex:(NSUInteger)index playerPosition:(PlayerPosition)direction;
-- (void)gameOver:(BOOL)player1Won;
+- (void)gameOver:(MRMatchEndType) endType;
 - (void)setPlayerAliases:(NSArray*)playerAliases;
 @end
 

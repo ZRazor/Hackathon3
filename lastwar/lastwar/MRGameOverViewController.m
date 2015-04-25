@@ -16,12 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (_matchError) {
-        self.textLabel.text = @"Ошибка соединения";
-    } else if (_didWin) {
-        self.textLabel.text = @"Вы выиграли";
-    } else {
-        self.textLabel.text = @"Вы проиграли";
+    switch (_endType) {
+        case kLoseEnd:
+            self.textLabel.text = @"Вы проиграли";
+            break;
+        case kWinEnd:
+            self.textLabel.text = @"Вы выиграли";
+            break;
+        case kErrorEnd:
+            self.textLabel.text = @"Ошибка соединения";
+            break;
     }
 }
 

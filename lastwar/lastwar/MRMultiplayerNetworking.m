@@ -80,7 +80,7 @@ typedef struct {
     
     if (!success) {
         NSLog(@"Error sending data:%@", error.localizedDescription);
-        [self matchEnded];
+        [self.delegate gameOver:kErrorEnd];
     }
 }
 
@@ -235,11 +235,6 @@ typedef struct {
     [self tryStartGame];
 }
 
-- (void)matchEnded {
-    NSLog(@"Match has ended");
-    [_delegate matchEnded];
-}
-
 - (void)match:(GKMatch *)match didReceiveData:(NSData *)data
    fromPlayer:(NSString *)playerID {
     //1
@@ -291,7 +286,11 @@ typedef struct {
     } else if(message->messageType == kMessageTypeGameOver) {
         NSLog(@"Game over message received");
         MessageGameOver * messageGameOver = (MessageGameOver *) [data bytes];
-        [self.delegate gameOver:messageGameOver->player1Won];
+        MRMatchEndType endType = kWinEnd;
+        if (messageGameOver->player1Won) {
+            endType = kLoseEnd;
+        }
+        [self.delegate gameOver:endType];
     }
 }
 @end

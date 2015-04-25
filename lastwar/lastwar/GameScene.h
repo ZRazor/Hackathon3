@@ -20,7 +20,7 @@ typedef enum {
 
 
 @interface GameScene : SKScene <MultiplayerNetworkingProtocol, SKPhysicsContactDelegate>
-@property (nonatomic, copy) void (^gameOverBlock)(BOOL didWin);
+@property (nonatomic, copy) void (^gameOverBlock)(MRMatchEndType endType);
 @property (nonatomic, copy) void (^gameEndedBlock)();
 @property (nonatomic, copy) void (^gameStartBlock)();
 @property (nonatomic, strong) MRMultiplayerNetworking *networkingEngine;

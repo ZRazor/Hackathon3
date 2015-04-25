@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "matchEndType.h"
 
 @interface MRGameOverViewController : UIViewController
-@property BOOL didWin;
-@property BOOL matchError;
+@property MRMatchEndType endType;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @end
