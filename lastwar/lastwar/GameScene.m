@@ -18,9 +18,13 @@
     float afterShotTime, afterMoveTime;
     BOOL matchEnded;
     
+    UITouch* touch;
+    
     float fastGuns, midGuns, slowGuns;
     
     CGPoint startControllPoint;
+    
+    MRPlayerActionType startAtActionType;
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -191,13 +195,18 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    UITouch* touch = touches.allObjects[0];
-    [self startPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
+    touch = touches.allObjects[0];
+    MRPlayerActionType actionType = [self playerActionWithPoint:[touch locationInNode:self]];
+    startAtActionType = actionType;
+    [self startPlayerActionWithType:actionType];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch* touch = touches.allObjects[0];
+    if (startAtActionType != kPlayerFire) {
+        return;
+    }
+    touch = touches.allObjects[0];
     float x = [touch locationInNode:self].x;
     if (x < 100) {
         [playerMoveTimer invalidate];
@@ -214,7 +223,8 @@
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch* touch = touches.allObjects[0];
+    startAtActionType = 0;
+    touch = touches.allObjects[0];
     [self stopPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
 
     startControllPoint = CGPointMake(0, 0);
