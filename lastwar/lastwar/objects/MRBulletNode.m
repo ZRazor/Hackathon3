@@ -22,6 +22,7 @@
     self.physicsBody.categoryBitMask = categoryBullets;
     self.physicsBody.contactTestBitMask = categoryPlayers | categoryBlocks;
     self.physicsBody.collisionBitMask = 0x0;
+    self.zPosition = 50;
 //    self.physicsBody.dynamic = NO;
 
 //    self.physicsBody.mass = 1000;

@@ -33,7 +33,7 @@
         [self initializeGame];
     }
     matchEnded = NO;
-    self->afterShotTime = 0.3;
+    self->afterShotTime = 0.2;
     self->afterMoveTime = 0.025;
     
     self->fastGuns = 1;
@@ -66,23 +66,29 @@
 
 - (void)drawInterface
 {
+    
+    //fotter
     SKSpriteNode* bgBottonMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_bottom"]];
     bgBottonMenu.size = CGSizeMake(320, 72);
     bgBottonMenu.position = CGPointMake(CGRectGetMidX(self.frame), 36);
+    bgBottonMenu.zPosition = 100;
 
     [self addChild:bgBottonMenu];
     
     _leftButtonBg = [[SKSpriteNode alloc] init];
     _leftButtonBg.position = CGPointMake(50, 36);
     _leftButtonBg.size = CGSizeMake(50, 50);
+    _leftButtonBg.zPosition = 101;
     
     _fireButtonBg = [[SKSpriteNode alloc] init];
     _fireButtonBg.position = CGPointMake(160, 36);
     _fireButtonBg.size = CGSizeMake(56, 50);
+    _fireButtonBg.zPosition = 101;
     
     _rightButtonBg = [[SKSpriteNode alloc] init];
     _rightButtonBg.position = CGPointMake(270, 36);
     _rightButtonBg.size = CGSizeMake(50, 50);
+    _rightButtonBg.zPosition = 103;
     
     [self setDefaultButtonTexture];
     
@@ -90,6 +96,32 @@
     [self addChild:_fireButtonBg];
     [self addChild:_rightButtonBg];
     
+    //header
+    SKSpriteNode* headerBg = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"menu_top"]];
+    headerBg.size = CGSizeMake(320, 44);
+    headerBg.position = CGPointMake(CGRectGetMidX(self.frame), 546);
+    headerBg.zPosition = 100;
+    [self addChild:headerBg];
+    
+    SKSpriteNode *healthBar = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"hp_bar"]];
+    healthBar.size = CGSizeMake(214, 43);
+    healthBar.position = CGPointMake(CGRectGetMidX(self.frame), 542);
+    healthBar.zPosition = 101;
+    [self addChild:healthBar];
+    
+    SKSpriteNode *myHpProgress = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"hp_progress1"]];
+    myHpProgress.size = CGSizeMake(86, 8.6f);
+    myHpProgress.position = CGPointMake(CGRectGetMidX(self.frame) - 15, 542);
+    myHpProgress.anchorPoint = CGPointMake(1, 0);
+    myHpProgress.zPosition = 101;
+    [self addChild:myHpProgress];
+    
+    SKSpriteNode *otherHpProgress = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"hp_progress2"]];
+    otherHpProgress.size = CGSizeMake(86, 8.6f);
+    otherHpProgress.position = CGPointMake(CGRectGetMidX(self.frame) + 15, 542);
+    otherHpProgress.anchorPoint = CGPointMake(0, 0);
+    otherHpProgress.zPosition = 101;
+    [self addChild:otherHpProgress];
 }
 
 - (void)setDefaultButtonTexture
@@ -164,7 +196,7 @@
 - (void)initPlayers
 {
     myPlayer = [self createPlayerAtCoord:CGPointMake(160, 105) andType:kMyPlayer];
-    otherPlayer = [self createPlayerAtCoord:CGPointMake(160, 516) andType:kOtherPlayer];
+    otherPlayer = [self createPlayerAtCoord:CGPointMake(160, 493) andType:kOtherPlayer];
 
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
@@ -369,7 +401,11 @@
 {
     MRBulletNode* bullet = [[MRBulletNode alloc] initWithSpeed:1 AndDamage:10 AndStartPoint:startPoint];
     SKAction *moveAction = [SKAction moveTo:endPoint duration:bullet.speed];
-    [bullet runAction:moveAction];
+    [bullet runAction:moveAction completion:^{
+        if (bullet) {
+            [bullet removeFromParent];
+        }
+    }];
     [self addChild:bullet];
 }
 
