@@ -24,6 +24,9 @@
         return;
     }
 
+    if ([MRGameKitHelper sharedGameKitHelper].firstGamePlayed) {
+        return;
+    }
 
     [[NSNotificationCenter defaultCenter]
             addObserver:self

@@ -14,6 +14,7 @@ NSString *const LocalPlayerIsAuthenticated = @"local_player_authenticated";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedGameKitHelper = [[MRGameKitHelper alloc] init];
+        sharedGameKitHelper.firstGamePlayed = NO;
     });
     return sharedGameKitHelper;
 }
@@ -92,8 +93,7 @@ NSString *const LocalPlayerIsAuthenticated = @"local_player_authenticated";
     _matchStarted = NO;
     self.match = nil;
     _delegate = delegate;
-//    [viewController dismissViewControllerAnimated:NO completion:nil];
-    
+
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.minPlayers = minPlayers;
     request.maxPlayers = maxPlayers;

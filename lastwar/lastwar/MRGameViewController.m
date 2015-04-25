@@ -79,6 +79,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameOverSegue"]) {
+        [MRGameKitHelper sharedGameKitHelper].firstGamePlayed = YES;
         MRGameOverViewController *gameOverViewController = segue.destinationViewController;
         gameOverViewController.endType = endType;
     }

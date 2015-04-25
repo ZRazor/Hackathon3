@@ -12,5 +12,6 @@
 @interface MRGameOverViewController : UIViewController
 @property MRMatchEndType endType;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
+- (IBAction)backToMenuAction:(id)sender;
 
 @end

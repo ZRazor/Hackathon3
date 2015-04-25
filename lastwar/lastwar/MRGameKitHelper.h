@@ -1,4 +1,4 @@
-#define OFFLINE_GAME YES
+#define OFFLINE_GAME NO
 
 @import GameKit;
 
@@ -14,6 +14,7 @@ extern NSString *const LocalPlayerIsAuthenticated;
 
 @interface MRGameKitHelper : NSObject<GKMatchmakerViewControllerDelegate, GKMatchDelegate>
 
+@property BOOL firstGamePlayed;
 @property (nonatomic, readonly) UIViewController *authenticationViewController;
 @property (nonatomic, readonly) NSError *lastError;
 
