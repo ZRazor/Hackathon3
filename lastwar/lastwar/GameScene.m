@@ -78,8 +78,8 @@
 {
     switch (type) {
         case kPlayerFire:
-            [self playerFire];
-            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterShotTime target:self selector:@selector(playerFire) userInfo:nil repeats:YES];
+            [self myPlayerFire];
+            playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterShotTime target:self selector:@selector(myPlayerFire) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveRight:
             [self moveMyPlayerRight];
@@ -147,11 +147,18 @@
     NSLog(@"move left");
 }
 
-- (void)playerFire
+- (void)myPlayerFire {
+    [self playerFire:YES];
+}
+
+- (void)playerFire:(BOOL)isMyPlayer
 {
-    [self shotBulletWithStartCord:myPlayer.position];
-    
     NSLog(@"player fire");
+    if (isMyPlayer) {
+        [_networkingEngine sendShot:[myPlayer position].x];
+    }
+    
+    [self shotBulletWithStartCord:myPlayer.position];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -199,6 +206,7 @@
 
 - (void)setCurrentPlayerIndex:(NSUInteger)index {
     _currentPlayerIndex = index;
+    self.gameStartBlock();
 }
 
 - (void)movePlayerAtIndex:(NSUInteger)index direction:(MoveDirection)direction {
@@ -210,6 +218,12 @@
 
     NSLog(@"Player %d moved to %d", index, direction);
 }
+
+- (void)shotPlayerAtIndex:(NSUInteger)index playerPosition:(PlayerPosition)position {
+
+    NSLog(@"Player %d shot at %f", index, position);
+}
+
 
 - (void)gameOver:(BOOL)player1Won {
     BOOL didLocalPlayerWin = YES;

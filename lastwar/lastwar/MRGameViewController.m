@@ -54,12 +54,19 @@
 //        gameOverViewController.didWin = didWin;
 //        [self.navigationController pushViewController:gameOverViewController animated:YES];
     };
-    // Present the scene.
-    [skView presentScene:scene];
+    
+    if (OFFLINE_GAME) {
+        [skView presentScene:scene];
+    } else {
+        scene.gameStartBlock = ^() {
+            [skView presentScene:scene];
+        };
+    }
 
-    #ifdef DEBUG
+
+    if (OFFLINE_GAME) {
         return;
-    #endif
+    }
 
     _networkingEngine = [[MRMultiplayerNetworking alloc] init];
     _networkingEngine.delegate = scene;

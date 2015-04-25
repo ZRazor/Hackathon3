@@ -37,6 +37,12 @@ typedef struct {
     MoveDirection direction;
 } MessageMove;
 
+
+typedef struct {
+    Message message;
+    PlayerPosition playerPosition;
+} MessageShot;
+
 typedef struct {
     Message message;
     BOOL player1Won;
@@ -84,6 +90,15 @@ typedef struct {
     messageMove.direction = direction;
     NSData *data = [NSData dataWithBytes:&messageMove
                                   length:sizeof(MessageMove)];
+    [self sendData:data];
+}
+
+- (void)sendShot:(PlayerPosition)position {
+    MessageShot messageShot;
+    messageShot.message.messageType = kMessageTypeShot;
+    messageShot.playerPosition = position;
+    NSData *data = [NSData dataWithBytes:&messageShot
+                                  length:sizeof(messageShot)];
     [self sendData:data];
 }
 
@@ -269,6 +284,10 @@ typedef struct {
         NSLog(@"Move message received");
         MessageMove *messageMove = (MessageMove*)[data bytes];
         [self.delegate movePlayerAtIndex:[self indexForPlayerWithId:playerID] direction:messageMove->direction];
+    } else if (message->messageType == kMessageTypeShot) {
+        NSLog(@"Shot message received");
+        MessageShot *messageShot = (MessageShot*)[data bytes];
+        [self.delegate shotPlayerAtIndex:[self indexForPlayerWithId:playerID] playerPosition:messageShot->playerPosition];
     } else if(message->messageType == kMessageTypeGameOver) {
         NSLog(@"Game over message received");
         MessageGameOver * messageGameOver = (MessageGameOver *) [data bytes];

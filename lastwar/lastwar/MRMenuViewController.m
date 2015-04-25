@@ -19,10 +19,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-#ifdef DEBUG
-    [_findGameButton setEnabled:YES];
-    return;
-#endif
+    if (OFFLINE_GAME) {
+        [_findGameButton setEnabled:YES];
+        return;
+    }
 
 
     [[NSNotificationCenter defaultCenter]
