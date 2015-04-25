@@ -162,7 +162,7 @@
         startPoint = CGPointMake(myPlayer.position.x + 5, myPlayer.position.y + 11);
         endPoint = CGPointMake(myPlayer.position.x, 580);
     } else {
-        startPoint = CGPointMake(otherPlayer.position.x - 5, otherPlayer.position.y - 11);
+        startPoint = CGPointMake(otherPlayer.position.x + 5, otherPlayer.position.y - 11);
         endPoint = CGPointMake(otherPlayer.position.x + 5, -3);
     }
     
