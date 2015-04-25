@@ -7,6 +7,7 @@
 //
 
 #import "MRPlayerSprite.h"
+#import "masks.h"
 
 @implementation MRPlayerSprite
 
@@ -17,7 +18,14 @@
     } else if (type == kOtherPlayer) {
         self = [super initWithTexture:[SKTexture textureWithImageNamed:@"robot2"] color:nil size:CGSizeMake(32, 32)];
     }
-    
+
+    self.physicsBody =
+            [SKPhysicsBody bodyWithTexture:self.texture size:self.texture.size];
+    self.physicsBody.categoryBitMask = categoryPlayers;
+    self.physicsBody.contactTestBitMask = categoryBullets;
+    self.physicsBody.usesPreciseCollisionDetection = YES;
+    self.physicsBody.affectedByGravity = NO;
+
     if (!self) {
         return NULL;
     }

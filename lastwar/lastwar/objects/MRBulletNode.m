@@ -7,6 +7,7 @@
 //
 
 #import "MRBulletNode.h"
+#import "masks.h"
 
 @implementation MRBulletNode
 
@@ -17,7 +18,11 @@
     self.demage = demage;
     self.speed = speed;
     self.position = startPoint;
-    
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    self.physicsBody.categoryBitMask = categoryBullets;
+    self.physicsBody.contactTestBitMask = categoryPlayers;
+    self.physicsBody.affectedByGravity = NO;
+
     if (!self) {
         return NULL;
     }
