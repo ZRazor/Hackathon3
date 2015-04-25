@@ -10,6 +10,7 @@
 
 #import "MRMultiplayerNetworking.h"
 #import "MRPlayerSprite.h"
+#import "MRBulletNode.h"
 
 typedef enum {
     kPlayerMoveRight = 1,

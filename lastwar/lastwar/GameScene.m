@@ -14,6 +14,9 @@
     MRPlayerSprite *myPlayer, *otherPlayer;
     NSTimer* playerActionTimer;
     float afterShotTime, afterMoveTime;
+    
+    float fastGuns, midGuns, slowGuns;
+    
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -22,6 +25,11 @@
     }
     self->afterShotTime = 0.3;
     self->afterMoveTime = 0.025;
+    
+    self->fastGuns = 1;
+    self->midGuns = 2;
+    self->slowGuns = 3;
+    
     return self;
 }
 
@@ -70,12 +78,15 @@
 {
     switch (type) {
         case kPlayerFire:
+            [self playerFire];
             playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterShotTime target:self selector:@selector(playerFire) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveRight:
+            [self moveMyPlayerRight];
             playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime target:self selector:@selector(moveMyPlayerRight) userInfo:nil repeats:YES];
             break;
         case kPlayerMoveLeft:
+            [self moveMyPlayerLeft];
             playerActionTimer = [NSTimer scheduledTimerWithTimeInterval:afterMoveTime  target:self selector:@selector(moveMyPlayerLeft) userInfo:nil repeats:YES];
             break;
         default:
@@ -138,13 +149,14 @@
 
 - (void)playerFire
 {
+    [self shotBulletWithStartCord:myPlayer.position];
+    
     NSLog(@"player fire");
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch* touch = touches.allObjects[0];
-    
     [self startPlayerActionWithType:[self playerActionWithPoint:[touch locationInNode:self]]];
 }
 
@@ -166,7 +178,18 @@
     //check something
 }
 
-#pragma mark MultiplayerNetworkingProtocol
+
+#pragma mark - guns
+
+- (void)shotBulletWithStartCord:(CGPoint)startPoint
+{
+    MRBulletNode* bullet = [[MRBulletNode alloc] initWithSpeed:1 AndDemage:50 AndStartPoint:startPoint];
+    SKAction *moveAction = [SKAction moveTo:CGPointMake(bullet.position.x, 580) duration:bullet.speed];
+    [bullet runAction:moveAction];
+    [self addChild:bullet];
+}
+
+#pragma mark - MultiplayerNetworkingProtocol
 
 - (void)matchEnded {
     if (self.gameEndedBlock) {

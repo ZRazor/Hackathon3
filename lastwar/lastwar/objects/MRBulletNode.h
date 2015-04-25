@@ -10,4 +10,9 @@
 
 @interface MRBulletNode : SKSpriteNode
 
+@property NSInteger demage;
+@property CGPoint startPoint;
+
+-(instancetype)initWithSpeed:(NSInteger)speed AndDemage:(NSInteger)demage AndStartPoint:(CGPoint)startPoint;
+
 @end
