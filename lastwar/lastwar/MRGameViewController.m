@@ -86,7 +86,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameOverSegue"]) {
         MRGameOverViewController *gameOverViewController = segue.destinationViewController;
-        gameOverViewController.matchError = YES;
+        if (matchError) {
+            gameOverViewController.matchError = YES;
+        }
         gameOverViewController.didWin = localDidWin;
     }
 }
