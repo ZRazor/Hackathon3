@@ -30,6 +30,10 @@
     [self performSegueWithIdentifier:@"mainMenuSegue" sender:self];
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 
 
 @end

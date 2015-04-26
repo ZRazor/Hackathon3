@@ -56,7 +56,7 @@
 
     self.physicsWorld.contactDelegate = self;
 
-    SKSpriteNode* bgNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"bg_sand"]];
+    SKSpriteNode* bgNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"bg-rock"]];
     bgNode.zPosition = -100;
     bgNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:bgNode];
@@ -73,8 +73,8 @@
     
     //fotter
     SKSpriteNode* bgBottonMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_bottom"]];
-    bgBottonMenu.size = CGSizeMake(320, 72);
-    bgBottonMenu.position = CGPointMake(CGRectGetMidX(self.frame), 36);
+    bgBottonMenu.size = CGSizeMake(320, 84);
+    bgBottonMenu.position = CGPointMake(CGRectGetMidX(self.frame), 42);
     bgBottonMenu.zPosition = 100;
 
     [self addChild:bgBottonMenu];
@@ -102,7 +102,7 @@
     
     //header
     SKSpriteNode* headerBg = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"menu_top"]];
-    headerBg.size = CGSizeMake(320, 44);
+    headerBg.size = CGSizeMake(320, 52);
     headerBg.position = CGPointMake(CGRectGetMidX(self.frame), 546);
     headerBg.zPosition = 100;
     [self addChild:headerBg];
@@ -322,6 +322,10 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [playerMoveTimer invalidate];
+    playerMoveTimer = nil;
+    [playerActionTimer invalidate];
+    playerActionTimer = 0;
     
     touch = touches.allObjects[0];
     MRPlayerActionType actionType = [self playerActionWithPoint:[touch locationInNode:self]];

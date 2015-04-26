@@ -25,6 +25,7 @@
 		CE6A41551AEA6B9400C94BED /* MRSpalshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41541AEA6B9400C94BED /* MRSpalshViewController.m */; };
 		CE6A41591AEA7A9900C94BED /* MRPlayerSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41581AEA7A9900C94BED /* MRPlayerSprite.m */; };
 		CEF1F5B51AEB2AFD00A01D7E /* MRBulletNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5B41AEB2AFD00A01D7E /* MRBulletNode.m */; };
+		CEF1F5B91AEC8C2F00A01D7E /* MRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		CE6A41581AEA7A9900C94BED /* MRPlayerSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRPlayerSprite.m; path = objects/MRPlayerSprite.m; sourceTree = "<group>"; };
 		CEF1F5B31AEB2AFD00A01D7E /* MRBulletNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRBulletNode.h; path = objects/MRBulletNode.h; sourceTree = "<group>"; };
 		CEF1F5B41AEB2AFD00A01D7E /* MRBulletNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRBulletNode.m; path = objects/MRBulletNode.m; sourceTree = "<group>"; };
+		CEF1F5B71AEC8C2F00A01D7E /* MRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRBaseViewController.h; path = controllers/MRBaseViewController.h; sourceTree = "<group>"; };
+		CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRBaseViewController.m; path = controllers/MRBaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,7 @@
 		CE6A414D1AEA3C3A00C94BED /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEF1F5B61AEC8BEB00A01D7E /* base */,
 				31F23A571AEB668000864981 /* gameover */,
 				CE6A41521AEA6B1C00C94BED /* splash */,
 				CE6A41511AEA3CCA00C94BED /* game */,
@@ -246,6 +250,15 @@
 				24034F796197F0B290A395F5 /* MRDamagedObject.h */,
 			);
 			name = objects;
+			sourceTree = "<group>";
+		};
+		CEF1F5B61AEC8BEB00A01D7E /* base */ = {
+			isa = PBXGroup;
+			children = (
+				CEF1F5B71AEC8C2F00A01D7E /* MRBaseViewController.h */,
+				CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */,
+			);
+			name = base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +374,7 @@
 				3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */,
 				31F23A5A1AEB669000864981 /* MRGameOverViewController.m in Sources */,
 				CEF1F5B51AEB2AFD00A01D7E /* MRBulletNode.m in Sources */,
+				CEF1F5B91AEC8C2F00A01D7E /* MRBaseViewController.m in Sources */,
 				24034102C099E258320FD74B /* MRMultiplayerNetworking.m in Sources */,
 				24034BE165E4435C755B9736 /* MRBlockNode.m in Sources */,
 				240346CB7D847416B4B0E277 /* MRDamagedObject.m in Sources */,

@@ -16,6 +16,12 @@
 
 @implementation MRMenuViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg-rock-black"]]];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
@@ -27,7 +33,7 @@
     if ([MRGameKitHelper sharedGameKitHelper].firstGamePlayed) {
         return;
     }
-
+    
     [[NSNotificationCenter defaultCenter]
             addObserver:self
                selector:@selector(showAuthenticationViewController)
@@ -72,6 +78,10 @@
 
 - (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
 {
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 @end
