@@ -17,6 +17,8 @@ typedef enum
 
 @interface MRPlayerSprite : MRDamagedObject
 
+@property int bulletsCount;
+
 - (id)initWithPlayerType:(MRPlayerType)type;
 
 @end

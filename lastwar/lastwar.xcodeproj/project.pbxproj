@@ -15,6 +15,8 @@
 		31F23A5A1AEB669000864981 /* MRGameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F23A591AEB669000864981 /* MRGameOverViewController.m */; };
 		31F23A621AEC803200864981 /* explode.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 31F23A611AEC803200864981 /* explode.atlas */; };
 		31F23A641AEC8C2700864981 /* blood.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 31F23A631AEC8C2700864981 /* blood.atlas */; };
+		31F23A661AEC99E600864981 /* explode.wav in Resources */ = {isa = PBXBuildFile; fileRef = 31F23A651AEC99E600864981 /* explode.wav */; };
+		31F23A681AECA8E800864981 /* blood.wav in Resources */ = {isa = PBXBuildFile; fileRef = 31F23A671AECA8E800864981 /* blood.wav */; };
 		CE6A41251AEA3B4700C94BED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41241AEA3B4700C94BED /* main.m */; };
 		CE6A41281AEA3B4700C94BED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41271AEA3B4700C94BED /* AppDelegate.m */; };
 		CE6A412B1AEA3B4700C94BED /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A412A1AEA3B4700C94BED /* GameScene.m */; };
@@ -60,6 +62,8 @@
 		31F23A591AEB669000864981 /* MRGameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameOverViewController.m; sourceTree = "<group>"; };
 		31F23A611AEC803200864981 /* explode.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = explode.atlas; sourceTree = "<group>"; };
 		31F23A631AEC8C2700864981 /* blood.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blood.atlas; sourceTree = "<group>"; };
+		31F23A651AEC99E600864981 /* explode.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explode.wav; sourceTree = "<group>"; };
+		31F23A671AECA8E800864981 /* blood.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blood.wav; sourceTree = "<group>"; };
 		CE6A411F1AEA3B4700C94BED /* lastwar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lastwar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6A41231AEA3B4700C94BED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6A41241AEA3B4700C94BED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 		CEF1F5BC1AEC955600A01D7E /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				31F23A671AECA8E800864981 /* blood.wav */,
+				31F23A651AEC99E600864981 /* explode.wav */,
 				CEF1F5BA1AEC955200A01D7E /* blaster.wav */,
 				CEF1F5BD1AEC9A3100A01D7E /* door.wav */,
 			);
@@ -377,7 +383,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF1F5BE1AEC9A3100A01D7E /* door.wav in Resources */,
+				31F23A661AEC99E600864981 /* explode.wav in Resources */,
 				CE6A41381AEA3B4700C94BED /* LaunchScreen.xib in Resources */,
+				31F23A681AECA8E800864981 /* blood.wav in Resources */,
 				CE6A41351AEA3B4700C94BED /* Images.xcassets in Resources */,
 				CEF1F5BB1AEC955200A01D7E /* blaster.wav in Resources */,
 				31F23A641AEC8C2700864981 /* blood.atlas in Resources */,

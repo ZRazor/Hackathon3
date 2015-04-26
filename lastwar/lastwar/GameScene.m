@@ -16,6 +16,7 @@
     MRPlayerSprite *myPlayer, *otherPlayer;
     NSTimer *playerActionTimer;
     NSTimer *playerMoveTimer;
+    NSTimer *oneSecTimer;
     float afterShotTime, afterMoveTime;
     BOOL matchEnded;
     
@@ -32,6 +33,8 @@
     NSArray *explodeFrames;
 
     NSArray *bloodFrames;
+
+    SKLabelNode *bulletsLabel;
 
     
 }
@@ -158,6 +161,24 @@
     otherHpProgress.anchorPoint = CGPointMake(0, 0);
     otherHpProgress.zPosition = 101;
     [self addChild:otherHpProgress];
+
+
+
+    SKSpriteNode *bulletIcon = [[SKSpriteNode alloc]initWithTexture:[SKTexture textureWithImageNamed:@"icon_bullet"]];
+    bulletIcon.size = CGSizeMake(6.5f, 25);
+    bulletIcon.position = CGPointMake(10, 550);
+//    bulletIcon.anchorPoint = CGPointMake(0, 0);
+    bulletIcon.zPosition = 200;
+    [self addChild:bulletIcon];
+
+    bulletsLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    bulletsLabel.text = @"100";
+    bulletsLabel.fontSize = 20;
+//    bulletsLabel.position = CGPointMake(10, self.size.height-10);
+    bulletsLabel.zPosition = 200;
+    bulletsLabel.position = CGPointMake(32, 540);
+
+    [self addChild:bulletsLabel];
 }
 
 - (void)setDefaultButtonTexture
@@ -213,7 +234,11 @@
         return;
     }
     damObject.hp -= bullet.damage;
+    //FUUUUUU COPY PASTE FUUUUUU
     if (damObject == otherPlayer) {
+        if (bullet.damage != 0) {
+            [self runAction:[SKAction playSoundFileNamed:@"blood.wav" waitForCompletion:NO]];
+        }
         SKTexture *temp = bloodFrames[0];
         SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
         blood.position = damObject.position;
@@ -222,6 +247,9 @@
         SKAction *scaleAction = [SKAction scaleXTo:otherPlayer.hp/100.f duration:0.2];
         [otherHpProgress runAction:scaleAction completion:^{}];
     } else if (damObject == myPlayer) {
+        if (bullet.damage != 0) {
+            [self runAction:[SKAction playSoundFileNamed:@"blood.wav" waitForCompletion:NO]];
+        }
         SKTexture *temp = bloodFrames[0];
         SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
         blood.position = damObject.position;
@@ -238,6 +266,7 @@
         explode.position = damObject.position;
         [self addChild:explode];
         [self makeExplode:explode textures:explodeFrames];
+        [self runAction:[SKAction playSoundFileNamed:@"explode.wav" waitForCompletion:NO]];
         [damObject removeFromParent];
     }
     
@@ -272,6 +301,14 @@
 
     [self addChild:myPlayer];
     [self addChild:otherPlayer];
+
+    oneSecTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(oneSec) userInfo:nil repeats:YES];
+}
+
+-(void)oneSec {
+    if (myPlayer.bulletsCount < 50) {
+        myPlayer.bulletsCount++;
+    }
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -354,10 +391,16 @@
         [playerMoveTimer invalidate];
     }
     playerMoveTimer = nil;
+    oneSecTimer = nil;
+
 }
 
 - (void)myPlayerFire {
+    if (myPlayer.bulletsCount <= 0) {
+        return;
+    }
     [_networkingEngine sendShot:[myPlayer position].x];
+    myPlayer.bulletsCount--;
     [self playerFire:myPlayer position:[myPlayer position].x];
 }
 
@@ -452,6 +495,9 @@
 
     [_networkingEngine sendGameEnd:(endType == kWinEnd)];
     if (self.gameOverBlock) {
+        if (oneSecTimer) {
+            [oneSecTimer invalidate];
+        }
         [self stopPlayerActionWithType:nil];
         self.gameOverBlock(endType);
     }
@@ -467,6 +513,8 @@
     } else if (otherPlayer.hp <= 0) {
         [self endGameWithStatus:kWinEnd];
     }
+
+    [bulletsLabel setText:[NSString stringWithFormat:@"%d", myPlayer.bulletsCount]];
 
 
     //check something
@@ -520,6 +568,9 @@
     matchEnded = YES;
     _currentPlayerIndex = -1;
     if (self.gameOverBlock) {
+        if (oneSecTimer) {
+            [oneSecTimer invalidate];
+        }
         [self stopPlayerActionWithType:nil];
         self.gameOverBlock(endType);
     }
