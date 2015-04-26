@@ -1,44 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="576"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="IOE-hf-Lbo">
-                    <rect key="frame" x="165" y="165" width="150" height="150"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="IbW-Rc-rlc"/>
-                        <constraint firstAttribute="height" constant="150" id="W1E-bW-DwQ"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weapons" translatesAutoresizingMaskIntoConstraints="NO" id="f5t-fQ-gGP">
-                    <rect key="frame" x="165" y="165" width="150" height="150"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="150" id="Pse-P7-wC5"/>
-                        <constraint firstAttribute="width" constant="150" id="kTH-vF-JE9"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_splash" translatesAutoresizingMaskIntoConstraints="NO" id="OkE-SR-II7">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="576"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="IOE-hf-Lbo" secondAttribute="centerY" id="DYM-76-Juc"/>
-                <constraint firstAttribute="centerY" secondItem="f5t-fQ-gGP" secondAttribute="centerY" id="Gar-L7-buz"/>
-                <constraint firstAttribute="centerX" secondItem="IOE-hf-Lbo" secondAttribute="centerX" id="bOE-VD-zNj"/>
-                <constraint firstAttribute="centerX" secondItem="f5t-fQ-gGP" secondAttribute="centerX" id="l0A-i9-iLJ"/>
+                <constraint firstItem="OkE-SR-II7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1nz-l9-5Sh"/>
+                <constraint firstItem="OkE-SR-II7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AsJ-NZ-qxE"/>
+                <constraint firstAttribute="bottom" secondItem="OkE-SR-II7" secondAttribute="bottom" id="QS6-im-bgi"/>
+                <constraint firstAttribute="trailing" secondItem="OkE-SR-II7" secondAttribute="trailing" id="W6C-vo-s1Y"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="464" y="500"/>
         </view>
     </objects>
     <resources>
-        <image name="shield" width="150" height="150"/>
-        <image name="weapons" width="100" height="100"/>
+        <image name="bg_splash" width="320" height="568"/>
     </resources>
 </document>

@@ -31,6 +31,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weapons" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-un-12F">
                                 <rect key="frame" x="85" y="209" width="150" height="150"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_splash" translatesAutoresizingMaskIntoConstraints="NO" id="rnr-5d-WCP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -250,6 +253,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg_splash" width="320" height="568"/>
         <image name="btn_back" width="63" height="57"/>
         <image name="btn_base_1" width="63" height="57"/>
         <image name="btn_options_1" width="63" height="57"/>
