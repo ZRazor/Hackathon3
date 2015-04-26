@@ -13,6 +13,7 @@
 		24034BE165E4435C755B9736 /* MRBlockNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 240348590E46310695B7F8FD /* MRBlockNode.m */; };
 		3125649C1AEA4E7600EE3690 /* MRMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */; };
 		31F23A5A1AEB669000864981 /* MRGameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F23A591AEB669000864981 /* MRGameOverViewController.m */; };
+		31F23A621AEC803200864981 /* explode.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 31F23A611AEC803200864981 /* explode.atlas */; };
 		CE6A41251AEA3B4700C94BED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41241AEA3B4700C94BED /* main.m */; };
 		CE6A41281AEA3B4700C94BED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41271AEA3B4700C94BED /* AppDelegate.m */; };
 		CE6A412B1AEA3B4700C94BED /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A412A1AEA3B4700C94BED /* GameScene.m */; };
@@ -52,6 +53,7 @@
 		3125649B1AEA4E7600EE3690 /* MRMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMenuViewController.m; sourceTree = "<group>"; };
 		31F23A581AEB669000864981 /* MRGameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameOverViewController.h; sourceTree = "<group>"; };
 		31F23A591AEB669000864981 /* MRGameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameOverViewController.m; sourceTree = "<group>"; };
+		31F23A611AEC803200864981 /* explode.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = explode.atlas; sourceTree = "<group>"; };
 		CE6A411F1AEA3B4700C94BED /* lastwar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lastwar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6A41231AEA3B4700C94BED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6A41241AEA3B4700C94BED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		CE6A41561AEA7A4300C94BED /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				31F23A611AEC803200864981 /* explode.atlas */,
 				CE6A41571AEA7A9900C94BED /* MRPlayerSprite.h */,
 				CE6A41581AEA7A9900C94BED /* MRPlayerSprite.m */,
 				CEF1F5B31AEB2AFD00A01D7E /* MRBulletNode.h */,
@@ -334,6 +337,7 @@
 				CE6A41351AEA3B4700C94BED /* Images.xcassets in Resources */,
 				CE6A412D1AEA3B4700C94BED /* GameScene.sks in Resources */,
 				CE6A41331AEA3B4700C94BED /* Main.storyboard in Resources */,
+				31F23A621AEC803200864981 /* explode.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

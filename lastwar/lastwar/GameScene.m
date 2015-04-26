@@ -28,6 +28,8 @@
     MRPlayerActionType startAtActionType;
     
     SKSpriteNode *myHpProgress, *otherHpProgress;
+
+    NSArray *explodeFrames;
     
     
 }
@@ -49,6 +51,18 @@
 
 - (void)initializeGame {
     _players = [NSMutableArray arrayWithCapacity:2];
+
+    NSMutableArray *newExplodeFrames = [NSMutableArray array];
+
+    SKTextureAtlas *explodeAtlas = [SKTextureAtlas atlasNamed:@"explode"];
+
+    int numImages = explodeAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"expl%d", i];
+        SKTexture *temp = [explodeAtlas textureNamed:textureName];
+        [newExplodeFrames addObject:temp];
+    }
+    explodeFrames = newExplodeFrames;
 
     [self initPlayers];
     [self drawInterface];
@@ -188,18 +202,32 @@
     if (damObject == otherPlayer) {
         SKAction *scaleAction = [SKAction scaleXTo:otherPlayer.hp/100.f duration:0.2];
         [otherHpProgress runAction:scaleAction completion:^{}];
-    } else {
+    } else if (damObject == myPlayer) {
         SKAction *scaleAction = [SKAction scaleXTo:myPlayer.hp/100.f duration:0.2];
         [myHpProgress runAction:scaleAction completion:^{}];
-
     }
     NSLog(@"Damage -%d!", bullet.damage);
     bullet.damage = 0;
     if ([damObject isKindOfClass:[MRBlockNode class]] && damObject.hp <= 0) {
+        SKTexture *temp = explodeFrames[0];
+        SKSpriteNode *explode = [SKSpriteNode spriteNodeWithTexture:temp];
+        explode.position = damObject.position;
+        [self addChild:explode];
+        [self makeExplode:explode];
         [damObject removeFromParent];
     }
     
     [bullet removeFromParent];
+}
+
+- (void)makeExplode:(SKSpriteNode *)explode {
+    [explode runAction:[SKAction repeatAction:
+            [SKAction animateWithTextures:explodeFrames
+                             timePerFrame:0.1f
+                                   resize:NO
+                                  restore:NO] count:1] completion:^(){
+       [explode removeFromParent];
+    }];
 }
 
 - (void)didEndContact:(SKPhysicsContact *)contact {
