@@ -1,19 +1,19 @@
 //
-//  MRBaseViewController.m
+//  MRSettingsViewController.m
 //  lastwar
 //
 //  Created by Зинов Михаил  on 26.04.15.
 //  Copyright (c) 2015 MAYAK. All rights reserved.
 //
 
-#import "MRBaseViewController.h"
-#import <AVFoundation/AVFoundation.h>
+#import "MRSettingsViewController.h"
 
-@interface MRBaseViewController ()
+
+@interface MRSettingsViewController ()
 
 @end
 
-@implementation MRBaseViewController
+@implementation MRSettingsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,10 +23,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)prefersStatusBarHidden {
-    return YES;
 }
 
 /*
@@ -39,7 +35,7 @@
 }
 */
 
-- (IBAction)backAction:(id)sender {
+- (IBAction)baskAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

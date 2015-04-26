@@ -49,6 +49,52 @@
             </objects>
             <point key="canvasLocation" x="-374" y="57"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="9cz-hI-XIM">
+            <objects>
+                <viewController id="aDC-46-vsN" customClass="MRSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A25-bg-3s5"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mcu-C8-qEt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2qW-ip-rdf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_top" translatesAutoresizingMaskIntoConstraints="NO" id="mHe-yb-Oc6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="wSO-9q-9bQ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qc-Av-u8k">
+                                <rect key="frame" x="12" y="11" width="30" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Fl4-aL-swL"/>
+                                    <constraint firstAttribute="width" constant="30" id="neV-S2-EIB"/>
+                                </constraints>
+                                <state key="normal" image="btn_back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="Nl9-dd-ZRV" eventType="touchUpInside" id="7Pg-Ab-suB"/>
+                                    <action selector="baskAction:" destination="aDC-46-vsN" eventType="touchUpInside" id="e4P-2I-JeF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="mHe-yb-Oc6" secondAttribute="centerX" id="HFe-qp-43w"/>
+                            <constraint firstItem="2Qc-Av-u8k" firstAttribute="top" secondItem="2qW-ip-rdf" secondAttribute="topMargin" constant="11" id="Mbo-9s-lHH"/>
+                            <constraint firstItem="mHe-yb-Oc6" firstAttribute="top" secondItem="2qW-ip-rdf" secondAttribute="topMargin" id="lIQ-sM-zpJ"/>
+                            <constraint firstItem="2Qc-Av-u8k" firstAttribute="leading" secondItem="2qW-ip-rdf" secondAttribute="leadingMargin" constant="-4" id="mMs-NX-s7C"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gi4-zj-w9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33" y="-621"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="okU-Y4-rFX">
             <objects>
@@ -111,6 +157,9 @@
                                         <state key="normal" image="btn_options_1">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="aDC-46-vsN" kind="modal" id="zky-mZ-etP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -167,6 +216,12 @@
                                     <action selector="backAction:" destination="Nl9-dd-ZRV" eventType="touchUpInside" id="VAu-HO-OpM"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="wepons_bg" translatesAutoresizingMaskIntoConstraints="NO" id="fH6-2r-pEH">
+                                <rect key="frame" x="16" y="83" width="300" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="185" id="MWX-84-CFo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -263,6 +318,7 @@
         <image name="play-bg" width="80" height="80"/>
         <image name="shield" width="150" height="150"/>
         <image name="weapons" width="100" height="100"/>
+        <image name="wepons_bg" width="150" height="92"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

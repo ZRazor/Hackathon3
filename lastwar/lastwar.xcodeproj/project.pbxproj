@@ -30,6 +30,7 @@
 		CEF1F5B91AEC8C2F00A01D7E /* MRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */; };
 		CEF1F5BB1AEC955200A01D7E /* blaster.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEF1F5BA1AEC955200A01D7E /* blaster.wav */; };
 		CEF1F5BE1AEC9A3100A01D7E /* door.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEF1F5BD1AEC9A3100A01D7E /* door.wav */; };
+		CEF1F5C21AEC9CCB00A01D7E /* MRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5C11AEC9CCB00A01D7E /* MRSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRBaseViewController.m; path = controllers/MRBaseViewController.m; sourceTree = "<group>"; };
 		CEF1F5BA1AEC955200A01D7E /* blaster.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blaster.wav; sourceTree = "<group>"; };
 		CEF1F5BD1AEC9A3100A01D7E /* door.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = door.wav; sourceTree = "<group>"; };
+		CEF1F5C01AEC9CCB00A01D7E /* MRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRSettingsViewController.h; path = controllers/MRSettingsViewController.h; sourceTree = "<group>"; };
+		CEF1F5C11AEC9CCB00A01D7E /* MRSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRSettingsViewController.m; path = controllers/MRSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,7 @@
 		CE6A414D1AEA3C3A00C94BED /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEF1F5BF1AEC9CAF00A01D7E /* settings */,
 				CEF1F5B61AEC8BEB00A01D7E /* base */,
 				31F23A571AEB668000864981 /* gameover */,
 				CE6A41521AEA6B1C00C94BED /* splash */,
@@ -279,6 +283,15 @@
 				CEF1F5BD1AEC9A3100A01D7E /* door.wav */,
 			);
 			name = sounds;
+			sourceTree = "<group>";
+		};
+		CEF1F5BF1AEC9CAF00A01D7E /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				CEF1F5C01AEC9CCB00A01D7E /* MRSettingsViewController.h */,
+				CEF1F5C11AEC9CCB00A01D7E /* MRSettingsViewController.m */,
+			);
+			name = settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF1F5C21AEC9CCB00A01D7E /* MRSettingsViewController.m in Sources */,
 				CE6A41301AEA3B4700C94BED /* MRGameViewController.m in Sources */,
 				CE6A41281AEA3B4700C94BED /* AppDelegate.m in Sources */,
 				CE6A412B1AEA3B4700C94BED /* GameScene.m in Sources */,

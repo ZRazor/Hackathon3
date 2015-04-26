@@ -9,9 +9,10 @@
 #import "MRMenuViewController.h"
 #import "MRGameKitHelper.h"
 #import "MRGameViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface MRMenuViewController ()
-
+@property(nonatomic) AVAudioPlayer *audio;
 @end
 
 @implementation MRMenuViewController
@@ -62,6 +63,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self playDoor];
     if ([[segue identifier] isEqualToString:@"findGameSegue"]) {
         [MRGameKitHelper sharedGameKitHelper].gameReady = YES;
     }
@@ -75,6 +77,13 @@
 - (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
 {
 //    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)playDoor
+{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"door" ofType:@"wav"];
+    self.audio = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+    [self.audio play];
 }
 
 - (BOOL)prefersStatusBarHidden {

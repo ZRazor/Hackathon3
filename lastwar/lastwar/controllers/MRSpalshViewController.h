@@ -16,6 +16,4 @@
 @property (strong, nonatomic) IBOutlet UIImageView *shieldImageVIew;
 @property (strong, nonatomic) IBOutlet UIImageView *weaponsImageView;
 
-@property(nonatomic) AVAudioPlayer *audio;
-
 @end

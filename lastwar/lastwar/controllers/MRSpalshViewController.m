@@ -10,7 +10,7 @@
 #import "MRMenuViewController.h"
 
 @interface MRSpalshViewController ()
-
+@property(nonatomic) AVAudioPlayer *audio;
 @end
 
 @implementation MRSpalshViewController
