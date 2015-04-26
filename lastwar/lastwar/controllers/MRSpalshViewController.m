@@ -28,6 +28,9 @@
 - (void)showMainMenuController
 {
     [self performSegueWithIdentifier:@"mainMenuSegue" sender:self];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"door" ofType:@"wav"];
+    self.audio = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+    [self.audio play];
 }
 
 - (BOOL)prefersStatusBarHidden {

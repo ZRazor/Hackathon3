@@ -29,6 +29,7 @@
 		CEF1F5B51AEB2AFD00A01D7E /* MRBulletNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5B41AEB2AFD00A01D7E /* MRBulletNode.m */; };
 		CEF1F5B91AEC8C2F00A01D7E /* MRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */; };
 		CEF1F5BB1AEC955200A01D7E /* blaster.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEF1F5BA1AEC955200A01D7E /* blaster.wav */; };
+		CEF1F5BE1AEC9A3100A01D7E /* door.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEF1F5BD1AEC9A3100A01D7E /* door.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		CEF1F5B71AEC8C2F00A01D7E /* MRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRBaseViewController.h; path = controllers/MRBaseViewController.h; sourceTree = "<group>"; };
 		CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRBaseViewController.m; path = controllers/MRBaseViewController.m; sourceTree = "<group>"; };
 		CEF1F5BA1AEC955200A01D7E /* blaster.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blaster.wav; sourceTree = "<group>"; };
+		CEF1F5BD1AEC9A3100A01D7E /* door.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = door.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF1F5BA1AEC955200A01D7E /* blaster.wav */,
+				CEF1F5BD1AEC9A3100A01D7E /* door.wav */,
 			);
 			name = sounds;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF1F5BE1AEC9A3100A01D7E /* door.wav in Resources */,
 				CE6A41381AEA3B4700C94BED /* LaunchScreen.xib in Resources */,
 				CE6A41351AEA3B4700C94BED /* Images.xcassets in Resources */,
 				CEF1F5BB1AEC955200A01D7E /* blaster.wav in Resources */,

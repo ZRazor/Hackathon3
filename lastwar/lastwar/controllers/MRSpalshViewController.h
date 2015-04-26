@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface MRSpalshViewController : UIViewController
 
@@ -14,5 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIView *bottonView;
 @property (strong, nonatomic) IBOutlet UIImageView *shieldImageVIew;
 @property (strong, nonatomic) IBOutlet UIImageView *weaponsImageView;
+
+@property(nonatomic) AVAudioPlayer *audio;
 
 @end
