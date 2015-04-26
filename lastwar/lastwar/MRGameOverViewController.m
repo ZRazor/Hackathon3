@@ -44,7 +44,4 @@
 }
 */
 
-- (IBAction)backToMenuAction:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
 @end

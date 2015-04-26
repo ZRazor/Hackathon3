@@ -24,10 +24,6 @@
         return;
     }
 
-    if ([MRGameKitHelper sharedGameKitHelper].firstGamePlayed) {
-        return;
-    }
-
     [[NSNotificationCenter defaultCenter]
             addObserver:self
                selector:@selector(showAuthenticationViewController)
@@ -56,15 +52,16 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"findGameSegue"]) {
+        [MRGameKitHelper sharedGameKitHelper].gameReady = YES;
+    }
 }
-*/
+
 
 - (void)playerAuthenticated {
     [_findGameButton setEnabled:YES];
@@ -72,6 +69,7 @@
 
 - (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
 {
+//    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

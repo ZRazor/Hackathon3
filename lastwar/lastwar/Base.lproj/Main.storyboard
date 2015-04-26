@@ -81,7 +81,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LVB-YS-i5n" kind="modal" id="Ms4-CE-AUd"/>
+                                    <segue destination="LVB-YS-i5n" kind="modal" identifier="findGameSegue" id="Ms4-CE-AUd"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="XFB-qc-LGg">
@@ -190,11 +190,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="D2l-M6-oXh"/>
                                 </constraints>
-                                <state key="normal" title="В Меню">
+                                <state key="normal" title="Еще раз">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="backToMenuAction:" destination="P43-HS-A6m" eventType="touchUpInside" id="4Ug-3V-nje"/>
+                                    <segue destination="jMN-LV-nwQ" kind="unwind" unwindAction="unwindToThisViewController:" id="x9q-8G-nAK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -213,6 +213,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maA-Cu-0jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jMN-LV-nwQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="844" y="57"/>
         </scene>

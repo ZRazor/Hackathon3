@@ -38,6 +38,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
+    if (!OFFLINE_GAME) {
+        if (![MRGameKitHelper sharedGameKitHelper].gameReady) {
+            return;
+        }
+    }
+
     SKView *skView = (SKView*)self.view;
 
     skView.showsFPS = YES;
@@ -51,6 +57,10 @@
         [skView presentScene:nil];
         endType = mEndType;
         [self performSegueWithIdentifier:@"gameOverSegue" sender:self];
+    };
+
+    scene.goBack = ^() {
+        [self dismissViewControllerAnimated:NO completion:nil];
     };
     
     if (OFFLINE_GAME) {
@@ -79,7 +89,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameOverSegue"]) {
-        [MRGameKitHelper sharedGameKitHelper].firstGamePlayed = YES;
+        [MRGameKitHelper sharedGameKitHelper].gameReady = NO;
         MRGameOverViewController *gameOverViewController = segue.destinationViewController;
         gameOverViewController.endType = endType;
     }

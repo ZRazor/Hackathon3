@@ -394,6 +394,7 @@
 
     [_networkingEngine sendGameEnd:(endType == kWinEnd)];
     if (self.gameOverBlock) {
+        [self stopPlayerActionWithType:nil];
         self.gameOverBlock(endType);
     }
 }
@@ -461,7 +462,15 @@
     matchEnded = YES;
     _currentPlayerIndex = -1;
     if (self.gameOverBlock) {
+        [self stopPlayerActionWithType:nil];
         self.gameOverBlock(endType);
+    }
+}
+
+- (void)matchDismissed {
+    if (self.goBack) {
+        [self stopPlayerActionWithType:nil];
+        self.goBack();
     }
 }
 

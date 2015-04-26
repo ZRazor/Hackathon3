@@ -224,6 +224,11 @@ typedef struct {
 
 #pragma mark GameKitHelper delegate methods
 
+- (void)matchDismissed {
+    [self.delegate matchDismissed];
+
+}
+
 - (void)matchStarted {
     NSLog(@"Match has started successfully");
     if (_receivedAllRandomNumbers) {
