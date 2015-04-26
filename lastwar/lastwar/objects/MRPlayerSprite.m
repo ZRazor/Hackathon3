@@ -20,6 +20,7 @@
     }
 
     self.hp = 100;
+    self.bulletsCount = 50;
 
     self.physicsBody =
             [SKPhysicsBody bodyWithTexture:self.texture size:self.texture.size];
