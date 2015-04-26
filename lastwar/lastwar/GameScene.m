@@ -234,7 +234,11 @@
         return;
     }
     damObject.hp -= bullet.damage;
+    //FUUUUUU COPY PASTE FUUUUUU
     if (damObject == otherPlayer) {
+        if (bullet.damage != 0) {
+            [self runAction:[SKAction playSoundFileNamed:@"blood.wav" waitForCompletion:NO]];
+        }
         SKTexture *temp = bloodFrames[0];
         SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
         blood.position = damObject.position;
@@ -243,6 +247,9 @@
         SKAction *scaleAction = [SKAction scaleXTo:otherPlayer.hp/100.f duration:0.2];
         [otherHpProgress runAction:scaleAction completion:^{}];
     } else if (damObject == myPlayer) {
+        if (bullet.damage != 0) {
+            [self runAction:[SKAction playSoundFileNamed:@"blood.wav" waitForCompletion:NO]];
+        }
         SKTexture *temp = bloodFrames[0];
         SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
         blood.position = damObject.position;
