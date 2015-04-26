@@ -8,7 +8,6 @@
 
 #import "MRSettingsViewController.h"
 
-
 @interface MRSettingsViewController ()
 
 @end
@@ -18,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [_switchOffline setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"offline"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +35,17 @@
 }
 */
 
+- (IBAction)switchAction:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:[_switchOffline isOn]  forKey:@"offline"];
+}
+
 - (IBAction)baskAction:(id)sender {
+    //!!
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="j3Q-2r-cdN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="j3Q-2r-cdN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -81,15 +81,34 @@
                                     <action selector="baskAction:" destination="aDC-46-vsN" eventType="touchUpInside" id="e4P-2I-JeF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OFFLINE MODE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmA-Oe-E0G">
+                                <rect key="frame" x="16" y="87" width="142" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blk-K0-XQe">
+                                <rect key="frame" x="255" y="82" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchAction:" destination="aDC-46-vsN" eventType="valueChanged" id="yAf-Bu-UPR"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="mHe-yb-Oc6" secondAttribute="centerX" id="HFe-qp-43w"/>
                             <constraint firstItem="2Qc-Av-u8k" firstAttribute="top" secondItem="2qW-ip-rdf" secondAttribute="topMargin" constant="11" id="Mbo-9s-lHH"/>
+                            <constraint firstItem="mmA-Oe-E0G" firstAttribute="top" secondItem="mHe-yb-Oc6" secondAttribute="bottom" constant="27" id="Pv2-ht-MQt"/>
+                            <constraint firstItem="blk-K0-XQe" firstAttribute="trailing" secondItem="2qW-ip-rdf" secondAttribute="trailingMargin" id="QO8-OM-LTM"/>
+                            <constraint firstItem="mmA-Oe-E0G" firstAttribute="leading" secondItem="2qW-ip-rdf" secondAttribute="leadingMargin" id="aYO-eo-NoX"/>
                             <constraint firstItem="mHe-yb-Oc6" firstAttribute="top" secondItem="2qW-ip-rdf" secondAttribute="topMargin" id="lIQ-sM-zpJ"/>
                             <constraint firstItem="2Qc-Av-u8k" firstAttribute="leading" secondItem="2qW-ip-rdf" secondAttribute="leadingMargin" constant="-4" id="mMs-NX-s7C"/>
+                            <constraint firstItem="blk-K0-XQe" firstAttribute="top" secondItem="mHe-yb-Oc6" secondAttribute="bottom" constant="22" id="vG2-UU-hM6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="switchOffline" destination="blk-K0-XQe" id="6eH-ep-Urw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gi4-zj-w9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

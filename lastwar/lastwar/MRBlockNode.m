@@ -13,7 +13,7 @@
 
 - (id)initWithPosition:(CGPoint)point;
 {
-    self = [super initWithTexture:[SKTexture textureWithImageNamed:@"box-3"] color:nil size:CGSizeMake(32, 32)];
+    self = [super initWithTexture:[SKTexture textureWithImageNamed:@"box-2"] color:nil size:CGSizeMake(32, 32)];
 
     self.hp = 100;
 

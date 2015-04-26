@@ -26,9 +26,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    if (OFFLINE_GAME) {
+//    if (OFFLINE_GAME) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"offline"]) {
         [_findGameButton setEnabled:YES];
         return;
+    } else {
+        _findGameButton.enabled = NO;
     }
     [[NSNotificationCenter defaultCenter]
             addObserver:self

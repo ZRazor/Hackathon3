@@ -93,12 +93,27 @@
     [self addChild:bgNode];
 
     //BLOCKS
-    MRBlockNode *block = [[MRBlockNode alloc] initWithPosition:CGPointMake(100, 300)];
-    MRBlockNode *block1 = [[MRBlockNode alloc] initWithPosition:CGPointMake(180, 350)];
-    MRBlockNode *block2 = [[MRBlockNode alloc] initWithPosition:CGPointMake(50, 400)];
+//    [self createBlockAt:CGPointMake(16, 170)];
+    [self createBlockAt:CGPointMake(48, 170)];
+    [self createBlockAt:CGPointMake(48, 202)];
+    [self createBlockAt:CGPointMake(80, 202)];
+    [self createBlockAt:CGPointMake(176, 208)];
+//    [self createBlockAt:CGPointMake(208, 234)];
+    [self createBlockAt:CGPointMake(272, 170)];
+
+//    [self createBlockAt:CGPointMake(320-16, 556-170)];
+    [self createBlockAt:CGPointMake(320-48, 556-170)];
+    [self createBlockAt:CGPointMake(320-48, 556-202)];
+    [self createBlockAt:CGPointMake(320-80, 556-202)];
+    [self createBlockAt:CGPointMake(320-176, 556-208)];
+//    [self createBlockAt:CGPointMake(320-208, 556-234)];
+    [self createBlockAt:CGPointMake(320-272, 556-170)];
+}
+
+
+- (void)createBlockAt:(CGPoint)point {
+    MRBlockNode *block = [[MRBlockNode alloc] initWithPosition:point];
     [self addChild:block];
-    [self addChild:block1];
-    [self addChild:block2];
 }
 
 #pragma mark - Interface

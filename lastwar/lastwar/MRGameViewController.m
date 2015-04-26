@@ -38,7 +38,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    if (!OFFLINE_GAME) {
+//    if (!OFFLINE_GAME) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"offline"]) {
         if (![MRGameKitHelper sharedGameKitHelper].gameReady) {
             return;
         }
@@ -63,7 +64,8 @@
         [self dismissViewControllerAnimated:NO completion:nil];
     };
     
-    if (OFFLINE_GAME) {
+//    if (OFFLINE_GAME) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"offline"]) {
         [skView presentScene:scene];
     } else {
         scene.gameStartBlock = ^() {
@@ -72,7 +74,8 @@
     }
 
 
-    if (OFFLINE_GAME) {
+//    if (OFFLINE_GAME) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"offline"]) {
         return;
     }
 

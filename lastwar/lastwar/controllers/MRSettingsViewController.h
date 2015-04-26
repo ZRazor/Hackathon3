@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MRSettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UISwitch *switchOffline;
+- (IBAction)switchAction:(id)sender;
 
 - (IBAction)baskAction:(id)sender;
 
