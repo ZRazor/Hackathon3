@@ -19,11 +19,10 @@
     switch (_endType) {
         case kLoseEnd:
             self.textLabel.text = @"Вы проиграли";
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"screen_defeat"]]];
             break;
         case kWinEnd:
             self.textLabel.text = @"Вы выиграли";
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"screen_win"]]];
+            [_overImage setImage:[UIImage imageNamed:@"screen_win"]];
             break;
         case kErrorEnd:
             self.textLabel.text = @"Ошибка соединения";

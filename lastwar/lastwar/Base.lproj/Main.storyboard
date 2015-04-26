@@ -315,6 +315,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="screen_defeat" translatesAutoresizingMaskIntoConstraints="NO" id="gzh-8j-awz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi1-dQ-DD2">
                                 <rect key="frame" x="16" y="394" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -338,14 +341,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Nx9-fJ-9rC" secondAttribute="trailing" constant="97" id="9Nf-JP-KBD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gzh-8j-awz" secondAttribute="trailing" constant="-16" id="9Xc-1D-jQj"/>
                             <constraint firstItem="Nx9-fJ-9rC" firstAttribute="leading" secondItem="yLp-SP-oIG" secondAttribute="leadingMargin" constant="97" id="HFA-8O-fSA"/>
                             <constraint firstItem="pi1-dQ-DD2" firstAttribute="leading" secondItem="yLp-SP-oIG" secondAttribute="leadingMargin" id="Kok-pW-3qF"/>
                             <constraint firstItem="T2V-YU-0Dy" firstAttribute="top" secondItem="Nx9-fJ-9rC" secondAttribute="bottom" constant="90" id="NbN-un-Sjb"/>
+                            <constraint firstItem="T2V-YU-0Dy" firstAttribute="top" secondItem="gzh-8j-awz" secondAttribute="bottom" id="Sfo-8G-wg8"/>
                             <constraint firstItem="Nx9-fJ-9rC" firstAttribute="top" secondItem="pi1-dQ-DD2" secondAttribute="bottom" constant="33" id="lEw-6s-cF4"/>
+                            <constraint firstItem="gzh-8j-awz" firstAttribute="leading" secondItem="yLp-SP-oIG" secondAttribute="leadingMargin" constant="-16" id="pYq-wY-J3k"/>
+                            <constraint firstItem="gzh-8j-awz" firstAttribute="top" secondItem="yLp-SP-oIG" secondAttribute="topMargin" id="uNv-Nj-aEi"/>
                             <constraint firstItem="pi1-dQ-DD2" firstAttribute="trailing" secondItem="yLp-SP-oIG" secondAttribute="trailingMargin" id="v5C-Wi-Kbw"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="overImage" destination="gzh-8j-awz" id="eLy-WN-cJ7"/>
                         <outlet property="textLabel" destination="pi1-dQ-DD2" id="81r-MA-txD"/>
                     </connections>
                 </viewController>
@@ -367,6 +375,7 @@
         <image name="menu_bottom" width="320" height="80"/>
         <image name="menu_top" width="320" height="49"/>
         <image name="play-bg" width="80" height="80"/>
+        <image name="screen_defeat" width="320" height="568"/>
         <image name="shield" width="150" height="150"/>
         <image name="weapons" width="100" height="100"/>
         <image name="wepons_bg" width="300" height="185"/>

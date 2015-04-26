@@ -12,5 +12,6 @@
 @interface MRGameOverViewController : UIViewController
 @property MRMatchEndType endType;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *overImage;
 
 @end
