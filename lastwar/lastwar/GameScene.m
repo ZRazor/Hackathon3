@@ -368,6 +368,8 @@
     
     NSLog(@"player fire");
     
+    [self runAction:[SKAction playSoundFileNamed:@"blaster.wav" waitForCompletion:NO]];
+    
     if (player == myPlayer) {
         startPoint = CGPointMake(position + 10, myPlayer.position.y + 30);
         endPoint = CGPointMake(position + 10, 600);

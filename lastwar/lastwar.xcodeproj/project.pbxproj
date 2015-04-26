@@ -28,6 +28,7 @@
 		CE6A41591AEA7A9900C94BED /* MRPlayerSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41581AEA7A9900C94BED /* MRPlayerSprite.m */; };
 		CEF1F5B51AEB2AFD00A01D7E /* MRBulletNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5B41AEB2AFD00A01D7E /* MRBulletNode.m */; };
 		CEF1F5B91AEC8C2F00A01D7E /* MRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */; };
+		CEF1F5BB1AEC955200A01D7E /* blaster.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEF1F5BA1AEC955200A01D7E /* blaster.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		CEF1F5B41AEB2AFD00A01D7E /* MRBulletNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRBulletNode.m; path = objects/MRBulletNode.m; sourceTree = "<group>"; };
 		CEF1F5B71AEC8C2F00A01D7E /* MRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRBaseViewController.h; path = controllers/MRBaseViewController.h; sourceTree = "<group>"; };
 		CEF1F5B81AEC8C2F00A01D7E /* MRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRBaseViewController.m; path = controllers/MRBaseViewController.m; sourceTree = "<group>"; };
+		CEF1F5BA1AEC955200A01D7E /* blaster.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blaster.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		CE6A41211AEA3B4700C94BED /* lastwar */ = {
 			isa = PBXGroup;
 			children = (
+				CEF1F5BC1AEC955600A01D7E /* sounds */,
 				CE6A41561AEA7A4300C94BED /* objects */,
 				CE6A414E1AEA3C5600C94BED /* services */,
 				CE6A414D1AEA3C3A00C94BED /* controllers */,
@@ -267,6 +270,14 @@
 			name = base;
 			sourceTree = "<group>";
 		};
+		CEF1F5BC1AEC955600A01D7E /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CEF1F5BA1AEC955200A01D7E /* blaster.wav */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,6 +362,7 @@
 			files = (
 				CE6A41381AEA3B4700C94BED /* LaunchScreen.xib in Resources */,
 				CE6A41351AEA3B4700C94BED /* Images.xcassets in Resources */,
+				CEF1F5BB1AEC955200A01D7E /* blaster.wav in Resources */,
 				31F23A641AEC8C2700864981 /* blood.atlas in Resources */,
 				CE6A412D1AEA3B4700C94BED /* GameScene.sks in Resources */,
 				CE6A41331AEA3B4700C94BED /* Main.storyboard in Resources */,
