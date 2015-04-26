@@ -30,7 +30,9 @@
     SKSpriteNode *myHpProgress, *otherHpProgress;
 
     NSArray *explodeFrames;
-    
+
+    NSArray *bloodFrames;
+
     
 }
 
@@ -63,6 +65,18 @@
         [newExplodeFrames addObject:temp];
     }
     explodeFrames = newExplodeFrames;
+
+    NSMutableArray *newBloodFrames = [NSMutableArray array];
+
+    SKTextureAtlas *bloodAtlas = [SKTextureAtlas atlasNamed:@"blood"];
+
+    numImages = bloodAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"bl%d", i];
+        SKTexture *temp = [bloodAtlas textureNamed:textureName];
+        [newBloodFrames addObject:temp];
+    }
+    bloodFrames = newBloodFrames;
 
     [self initPlayers];
     [self drawInterface];
@@ -200,9 +214,19 @@
     }
     damObject.hp -= bullet.damage;
     if (damObject == otherPlayer) {
+        SKTexture *temp = bloodFrames[0];
+        SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
+        blood.position = damObject.position;
+        [self addChild:blood];
+        [self makeExplode:blood textures:bloodFrames];
         SKAction *scaleAction = [SKAction scaleXTo:otherPlayer.hp/100.f duration:0.2];
         [otherHpProgress runAction:scaleAction completion:^{}];
     } else if (damObject == myPlayer) {
+        SKTexture *temp = bloodFrames[0];
+        SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
+        blood.position = damObject.position;
+        [self addChild:blood];
+        [self makeExplode:blood textures:bloodFrames];
         SKAction *scaleAction = [SKAction scaleXTo:myPlayer.hp/100.f duration:0.2];
         [myHpProgress runAction:scaleAction completion:^{}];
     }
@@ -213,16 +237,16 @@
         SKSpriteNode *explode = [SKSpriteNode spriteNodeWithTexture:temp];
         explode.position = damObject.position;
         [self addChild:explode];
-        [self makeExplode:explode];
+        [self makeExplode:explode textures:explodeFrames];
         [damObject removeFromParent];
     }
     
     [bullet removeFromParent];
 }
 
-- (void)makeExplode:(SKSpriteNode *)explode {
+- (void)makeExplode:(SKSpriteNode *)explode textures:(NSArray *)textures {
     [explode runAction:[SKAction repeatAction:
-            [SKAction animateWithTextures:explodeFrames
+            [SKAction animateWithTextures:textures
                              timePerFrame:0.1f
                                    resize:NO
                                   restore:NO] count:1] completion:^(){
