@@ -61,6 +61,32 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play-bg" translatesAutoresizingMaskIntoConstraints="NO" id="sTQ-1m-PGz" userLabel="bg_go">
                                 <rect key="frame" x="85" y="209" width="150" height="150"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hni-cC-EDF">
+                                <rect key="frame" x="160" y="255" width="63" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="63" id="BAp-VR-thV"/>
+                                    <constraint firstAttribute="height" constant="57" id="rfi-0B-xqf"/>
+                                </constraints>
+                                <state key="normal" image="btn_options_1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Nl9-dd-ZRV" kind="modal" id="MhO-Vv-5yu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGq-6U-6n9">
+                                <rect key="frame" x="89" y="255" width="63" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="vbN-am-SKP"/>
+                                    <constraint firstAttribute="width" constant="63" id="z1A-lg-ULX"/>
+                                </constraints>
+                                <state key="normal" image="btn_play_1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="LVB-YS-i5n" kind="modal" identifier="findGameSegue" id="Ms4-CE-AUd"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="XFB-qc-LGg">
                                 <rect key="frame" x="0.0" y="490" width="320" height="78"/>
                             </imageView>
@@ -221,11 +247,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="D2l-M6-oXh"/>
                                 </constraints>
-                                <state key="normal" title="В Меню">
+                                <state key="normal" title="Еще раз">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="backToMenuAction:" destination="P43-HS-A6m" eventType="touchUpInside" id="4Ug-3V-nje"/>
+                                    <segue destination="jMN-LV-nwQ" kind="unwind" unwindAction="unwindToThisViewController:" id="x9q-8G-nAK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -244,6 +270,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maA-Cu-0jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jMN-LV-nwQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="844" y="57"/>
         </scene>

@@ -13,7 +13,11 @@
 
 -(instancetype)initWithSpeed:(NSInteger)speed AndDamage:(NSInteger)damage AndStartPoint:(CGPoint)startPoint;
 {
-    self = [super initWithTexture:[SKTexture textureWithImageNamed:@"bullet_1"] color:nil size:CGSizeMake(20, 20)];
+    NSString *textureName = @"bullet_1";
+    if (startPoint.x >= 200) {
+        textureName = @"bullet_2";
+    }
+    self = [super initWithTexture:[SKTexture textureWithImageNamed:textureName] color:nil size:CGSizeMake(20, 20)];
     
     self.damage = damage;
     self.speed = speed;

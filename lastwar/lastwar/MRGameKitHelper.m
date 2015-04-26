@@ -14,7 +14,7 @@ NSString *const LocalPlayerIsAuthenticated = @"local_player_authenticated";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedGameKitHelper = [[MRGameKitHelper alloc] init];
-        sharedGameKitHelper.firstGamePlayed = NO;
+        sharedGameKitHelper.gameReady = NO;
     });
     return sharedGameKitHelper;
 }
@@ -130,7 +130,9 @@ NSString *const LocalPlayerIsAuthenticated = @"local_player_authenticated";
 
 // The user has cancelled matchmaking
 - (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController {
-    [viewController dismissViewControllerAnimated:YES completion:nil];
+    [viewController dismissViewControllerAnimated:YES completion:^(){
+        [self.delegate matchDismissed];
+    }];
 }
 
 // Matchmaking has failed with an error

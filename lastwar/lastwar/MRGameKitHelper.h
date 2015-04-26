@@ -5,6 +5,7 @@
 @protocol GameKitHelperDelegate
 - (void)matchStarted;
 - (void)matchEnded;
+- (void)matchDismissed;
 - (void)match:(GKMatch *)match didReceiveData:(NSData *)data
    fromPlayer:(NSString *)playerID;
 @end
@@ -14,7 +15,7 @@ extern NSString *const LocalPlayerIsAuthenticated;
 
 @interface MRGameKitHelper : NSObject<GKMatchmakerViewControllerDelegate, GKMatchDelegate>
 
-@property BOOL firstGamePlayed;
+@property BOOL gameReady;
 @property (nonatomic, readonly) UIViewController *authenticationViewController;
 @property (nonatomic, readonly) NSError *lastError;
 

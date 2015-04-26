@@ -28,7 +28,11 @@
     MRPlayerActionType startAtActionType;
     
     SKSpriteNode *myHpProgress, *otherHpProgress;
-    
+
+    NSArray *explodeFrames;
+
+    NSArray *bloodFrames;
+
     
 }
 
@@ -50,6 +54,30 @@
 - (void)initializeGame {
     _players = [NSMutableArray arrayWithCapacity:2];
 
+    NSMutableArray *newExplodeFrames = [NSMutableArray array];
+
+    SKTextureAtlas *explodeAtlas = [SKTextureAtlas atlasNamed:@"explode"];
+
+    int numImages = explodeAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"expl%d", i];
+        SKTexture *temp = [explodeAtlas textureNamed:textureName];
+        [newExplodeFrames addObject:temp];
+    }
+    explodeFrames = newExplodeFrames;
+
+    NSMutableArray *newBloodFrames = [NSMutableArray array];
+
+    SKTextureAtlas *bloodAtlas = [SKTextureAtlas atlasNamed:@"blood"];
+
+    numImages = bloodAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"bl%d", i];
+        SKTexture *temp = [bloodAtlas textureNamed:textureName];
+        [newBloodFrames addObject:temp];
+    }
+    bloodFrames = newBloodFrames;
+
     [self initPlayers];
     [self drawInterface];
     _currentPlayerIndex = -1;
@@ -63,7 +91,11 @@
 
     //BLOCKS
     MRBlockNode *block = [[MRBlockNode alloc] initWithPosition:CGPointMake(100, 300)];
+    MRBlockNode *block1 = [[MRBlockNode alloc] initWithPosition:CGPointMake(180, 350)];
+    MRBlockNode *block2 = [[MRBlockNode alloc] initWithPosition:CGPointMake(50, 400)];
     [self addChild:block];
+    [self addChild:block1];
+    [self addChild:block2];
 }
 
 #pragma mark - Interface
@@ -174,26 +206,52 @@
     if ([[contact bodyA].node isKindOfClass:[MRDamagedObject class]]) {
         damObject = (MRDamagedObject *)[contact bodyA].node;
         bullet = (MRBulletNode *)[contact bodyB].node;
-    } else {
+    } else if ([[contact bodyB].node isKindOfClass:[MRDamagedObject class]]) {
         damObject = (MRDamagedObject *)[contact bodyB].node;
         bullet = (MRBulletNode *)[contact bodyA].node;
+    } else {
+        return;
     }
     damObject.hp -= bullet.damage;
     if (damObject == otherPlayer) {
+        SKTexture *temp = bloodFrames[0];
+        SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
+        blood.position = damObject.position;
+        [self addChild:blood];
+        [self makeExplode:blood textures:bloodFrames];
         SKAction *scaleAction = [SKAction scaleXTo:otherPlayer.hp/100.f duration:0.2];
         [otherHpProgress runAction:scaleAction completion:^{}];
-    } else {
+    } else if (damObject == myPlayer) {
+        SKTexture *temp = bloodFrames[0];
+        SKSpriteNode *blood = [SKSpriteNode spriteNodeWithTexture:temp];
+        blood.position = damObject.position;
+        [self addChild:blood];
+        [self makeExplode:blood textures:bloodFrames];
         SKAction *scaleAction = [SKAction scaleXTo:myPlayer.hp/100.f duration:0.2];
         [myHpProgress runAction:scaleAction completion:^{}];
-
     }
     NSLog(@"Damage -%d!", bullet.damage);
     bullet.damage = 0;
     if ([damObject isKindOfClass:[MRBlockNode class]] && damObject.hp <= 0) {
+        SKTexture *temp = explodeFrames[0];
+        SKSpriteNode *explode = [SKSpriteNode spriteNodeWithTexture:temp];
+        explode.position = damObject.position;
+        [self addChild:explode];
+        [self makeExplode:explode textures:explodeFrames];
         [damObject removeFromParent];
     }
     
     [bullet removeFromParent];
+}
+
+- (void)makeExplode:(SKSpriteNode *)explode textures:(NSArray *)textures {
+    [explode runAction:[SKAction repeatAction:
+            [SKAction animateWithTextures:textures
+                             timePerFrame:0.1f
+                                   resize:NO
+                                  restore:NO] count:1] completion:^(){
+       [explode removeFromParent];
+    }];
 }
 
 - (void)didEndContact:(SKPhysicsContact *)contact {
@@ -392,6 +450,7 @@
 
     [_networkingEngine sendGameEnd:(endType == kWinEnd)];
     if (self.gameOverBlock) {
+        [self stopPlayerActionWithType:nil];
         self.gameOverBlock(endType);
     }
 }
@@ -459,7 +518,15 @@
     matchEnded = YES;
     _currentPlayerIndex = -1;
     if (self.gameOverBlock) {
+        [self stopPlayerActionWithType:nil];
         self.gameOverBlock(endType);
+    }
+}
+
+- (void)matchDismissed {
+    if (self.goBack) {
+        [self stopPlayerActionWithType:nil];
+        self.goBack();
     }
 }
 

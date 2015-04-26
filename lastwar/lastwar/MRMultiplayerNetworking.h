@@ -10,6 +10,7 @@ typedef unsigned int MYSUInteger;
 
 @protocol MultiplayerNetworkingProtocol <NSObject>
 - (void)matchEnded;
+- (void)matchDismissed;
 - (void)setCurrentPlayerIndex:(NSUInteger)index;
 - (void)movePlayerAtIndex:(NSUInteger)index position:(PlayerPosition)position;
 - (void)shotPlayerAtIndex:(NSUInteger)index playerPosition:(PlayerPosition)direction;
