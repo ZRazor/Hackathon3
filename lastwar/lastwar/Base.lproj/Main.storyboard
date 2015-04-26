@@ -200,8 +200,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_top" translatesAutoresizingMaskIntoConstraints="NO" id="I2R-CH-OwU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_top" translatesAutoresizingMaskIntoConstraints="NO" id="I2R-CH-OwU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="EPt-4x-yOx"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e88-4N-gTb">
                                 <rect key="frame" x="12" y="11" width="30" height="31"/>
@@ -216,17 +219,42 @@
                                     <action selector="backAction:" destination="Nl9-dd-ZRV" eventType="touchUpInside" id="VAu-HO-OpM"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="wepons_bg" translatesAutoresizingMaskIntoConstraints="NO" id="fH6-2r-pEH">
-                                <rect key="frame" x="16" y="83" width="300" height="185"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wepons_bg" translatesAutoresizingMaskIntoConstraints="NO" id="fH6-2r-pEH">
+                                <rect key="frame" x="10" y="83" width="300" height="185"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="MWX-84-CFo"/>
+                                    <constraint firstAttribute="width" constant="300" id="5wn-r4-gCt"/>
+                                    <constraint firstAttribute="height" constant="185" id="hen-7n-4Rv"/>
                                 </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box_bx_pace" translatesAutoresizingMaskIntoConstraints="NO" id="rk4-bX-I2i">
+                                <rect key="frame" x="10" y="480" width="300" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="jpc-4a-gqV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boxes" translatesAutoresizingMaskIntoConstraints="NO" id="svB-Yi-nUB">
+                                <rect key="frame" x="16" y="283" width="288" height="189"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-rock-black" translatesAutoresizingMaskIntoConstraints="NO" id="Yse-iQ-J0a">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="svB-Yi-nUB" firstAttribute="leading" secondItem="3lP-DR-rqT" secondAttribute="leadingMargin" id="2Is-CC-dnM"/>
+                            <constraint firstItem="fH6-2r-pEH" firstAttribute="top" secondItem="I2R-CH-OwU" secondAttribute="bottom" constant="23" id="Bnn-sy-SJq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rk4-bX-I2i" secondAttribute="trailing" constant="-6" id="GJe-e3-0fX"/>
+                            <constraint firstAttribute="centerX" secondItem="fH6-2r-pEH" secondAttribute="centerX" id="KSO-P2-IVN"/>
+                            <constraint firstItem="svB-Yi-nUB" firstAttribute="trailing" secondItem="3lP-DR-rqT" secondAttribute="trailingMargin" id="LFd-08-tka"/>
+                            <constraint firstItem="1n5-Av-JQq" firstAttribute="top" secondItem="rk4-bX-I2i" secondAttribute="bottom" constant="8" id="Qg6-Gk-WMJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I2R-CH-OwU" secondAttribute="trailing" constant="-16" id="cQT-4P-tey"/>
+                            <constraint firstItem="rk4-bX-I2i" firstAttribute="leading" secondItem="3lP-DR-rqT" secondAttribute="leadingMargin" constant="-6" id="fxv-ae-K5M"/>
                             <constraint firstItem="e88-4N-gTb" firstAttribute="top" secondItem="Clb-3a-UUQ" secondAttribute="bottom" constant="11" id="gYj-L7-tiw"/>
                             <constraint firstItem="e88-4N-gTb" firstAttribute="leading" secondItem="3lP-DR-rqT" secondAttribute="leadingMargin" constant="-4" id="jXH-QY-GA4"/>
+                            <constraint firstItem="I2R-CH-OwU" firstAttribute="leading" secondItem="3lP-DR-rqT" secondAttribute="leadingMargin" constant="-16" id="kIy-LZ-d7D"/>
+                            <constraint firstItem="svB-Yi-nUB" firstAttribute="top" secondItem="fH6-2r-pEH" secondAttribute="bottom" constant="15" id="l71-h6-31S"/>
+                            <constraint firstItem="rk4-bX-I2i" firstAttribute="top" secondItem="svB-Yi-nUB" secondAttribute="bottom" constant="8" id="nI9-kp-Tnv"/>
+                            <constraint firstItem="I2R-CH-OwU" firstAttribute="top" secondItem="Clb-3a-UUQ" secondAttribute="bottom" id="zR7-Kt-TFY"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -308,7 +336,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg-rock-black" width="320" height="568"/>
         <image name="bg_splash" width="320" height="568"/>
+        <image name="box_bx_pace" width="600" height="160"/>
+        <image name="boxes" width="288" height="189"/>
         <image name="btn_back" width="63" height="57"/>
         <image name="btn_base_1" width="63" height="57"/>
         <image name="btn_options_1" width="63" height="57"/>
@@ -318,7 +349,7 @@
         <image name="play-bg" width="80" height="80"/>
         <image name="shield" width="150" height="150"/>
         <image name="weapons" width="100" height="100"/>
-        <image name="wepons_bg" width="150" height="92"/>
+        <image name="wepons_bg" width="300" height="185"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
